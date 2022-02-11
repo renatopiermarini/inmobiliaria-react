@@ -1,0 +1,60 @@
+.search-section {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/sunset-quotes-21-1586531574.jpg);
+  background-size: cover;
+  background-position-y: 30%;
+  background-blend-mode: darken;
+}
+
+.buscador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  height: 200px;
+  width: 500px;
+  border-radius: 0px 20px 20px 20px;
+}
+
+.btn-search {
+  color: var(--primaryColor);
+  padding: 10px 20px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: bolder;
+  width: 150px;
+}
+
+.btn-search:hover {
+  background-color: rgba(255, 255, 255, 0.774);
+}
+
+.btn-search:active {
+  background-color: rgba(255, 255, 255, 0.63);
+}
+
+.btn-radius-right {
+  border-radius: 10px 10px 0px 0px;
+  border-right: inset;
+}
+
+.btn-radius-left {
+  border-radius: 10px 10px 0px 0px;
+  border-right: inset;
+}
+
+.select-property-type {
+  border-radius: 5px;
+  width: 80%;
+  padding: 5px 10px;
+  border: none;
+  box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.5);
+}
+.select-property-type:focus {
+  outline: none;
+}

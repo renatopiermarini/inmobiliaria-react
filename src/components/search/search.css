@@ -1,0 +1,49 @@
+@import "../../styles/global-colors.css";
+
+.search-section {
+  background-image: url(https://media.istockphoto.com/photos/pink-sunset-picture-id1139149089?k=20&m=1139149089&s=170667a&w=0&h=cC0yIVOH4i0Q4m1UNmtfGPzHIIRNAzK6f5qo43Z31UI=);
+  background-size: cover;
+  background-blend-mode: darken;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.buscador-container {
+  background-color: rgb(255, 255, 255);
+  height: 350px;
+  width: 90vw;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.btn-search {
+  width: 45vw;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  padding: 15px 25px;
+  color: var(--primaryColor);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 200ms ease;
+}
+
+.btn-search:active {
+  background-color: var(--primaryColor);
+  color: white;
+}
+
+.btn-venta {
+  border-radius: 10px 0 0 0;
+}
+
+.btn-alquiler {
+  border-radius: 0 10px 0 0;
+}
