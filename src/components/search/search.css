@@ -11,10 +11,13 @@
   flex-direction: column;
 }
 
-.buscador-container {
+.filters-container {
   background-color: rgb(255, 255, 255);
   height: 350px;
   width: 90vw;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
 }
 
 .btn-container {
@@ -30,9 +33,8 @@
   border: none;
   padding: 15px 25px;
   color: var(--primaryColor);
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 500;
-  transition: all 200ms ease;
 }
 
 .btn-search:active {
@@ -46,4 +48,149 @@
 
 .btn-alquiler {
   border-radius: 0 10px 0 0;
+}
+
+.select-property-type {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 3px 1px rgb(190, 190, 190);
+  border-radius: 10px;
+}
+
+/* En .buscador deberia haber un display:grid para organizar los selects */
+
+.buscador {
+  margin-top: 20px;
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 70%;
+}
+
+.btn-buscar {
+  padding: 0.9em 2em;
+  background-color: var(--primaryColor);
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  font-size: 14px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.btn-buscar:active {
+  background-color: #fff;
+  color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+}
+
+@media screen and (min-width: 960px) {
+  .search-section {
+    background-image: url(https://media.istockphoto.com/photos/pink-sunset-picture-id1139149089?k=20&m=1139149089&s=170667a&w=0&h=cC0yIVOH4i0Q4m1UNmtfGPzHIIRNAzK6f5qo43Z31UI=);
+    background-size: cover;
+    background-blend-mode: darken;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-position-y: 20%;
+  }
+
+  .buscador-container {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: start;
+    width: 80%;
+  }
+
+  .filters-container {
+    background-color: rgb(255, 255, 255);
+    height: 350px;
+    width: 30vw;
+    flex-direction: column;
+    display: flex;
+    border-radius: 0 10px 10px 10px;
+  }
+
+  .btn-search {
+    width: 180px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding: 15px 25px;
+    color: var(--primaryColor);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 300ms ease;
+    border-right: inset;
+    display: block;
+  }
+
+  .btn-search:active {
+    background-color: var(--primaryColor);
+    color: white;
+  }
+
+  .btn-search:hover {
+    background-color: rgb(224, 222, 222);
+  }
+
+  .btn-venta {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .btn-alquiler {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .select-property-type {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 3px 1px rgb(190, 190, 190);
+    border-radius: 10px;
+  }
+
+  /* En .buscador deberia haber un display:grid para organizar los selects */
+
+  .buscador {
+    margin-top: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 70%;
+  }
+
+  .btn-buscar {
+    padding: 0.9em 2em;
+    background-color: var(--primaryColor);
+    color: #fff;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    font-size: 14px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 300ms ease;
+  }
+
+  .btn-buscar:hover {
+    background-color: #b66597;
+  }
+  .btn-buscar:active {
+    background-color: #fff;
+    color: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
+  }
 }

@@ -16,19 +16,22 @@ export const Search = () => {
 
   return (
     <div className="search-section">
-      <div className="btn-container">
-        <button className="btn-search btn-venta" onClick={showVentaFilters}>
-          COMPRAR
-        </button>
-        <button
-          className="btn-search btn-alquiler"
-          onClick={showAlquilerFilters}
-        >
-          ALQUILAR
-        </button>
-      </div>
       <div className="buscador-container">
-        {state === true ? <VentaFilters /> : <AlquilerFilters />}
+        <div className="btn-container">
+          <button className="btn-search btn-venta" onClick={showVentaFilters}>
+            COMPRAR
+          </button>
+          <button
+            className="btn-search btn-alquiler"
+            onClick={showAlquilerFilters}
+          >
+            ALQUILAR
+          </button>
+        </div>
+        <div className="filters-container">
+          {state === true ? <VentaFilters /> : <AlquilerFilters />}
+          <button className="btn-buscar">BUSCAR</button>
+        </div>
       </div>
     </div>
   );
