@@ -13,8 +13,9 @@ export const Navbar = () => {
         <img src="../../assets/logo.jpeg" />
         <div className={`links ${clicked ? "active" : ""}`}>
           <a href="/">Inicio</a>
-          <a href="#h">Nosotros</a>
           <a href="#h">Novedades</a>
+          <a href="#h">Propiedades</a>
+          <a href="#h">Nosotros</a>
           <a href="#h">Contacto</a>
         </div>
         <div className="burger">

@@ -1,0 +1,140 @@
+@import "../../styles/global-colors.css";
+
+.card-container {
+  background-color: #fff;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 90%;
+  margin-top: 40px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.imagen-propiedad {
+  height: 300px;
+}
+
+.property-description {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding-right: 5px;
+  padding-left: 10px;
+}
+
+.property-description a {
+  color: rgb(0, 132, 255);
+}
+
+.comodidades {
+  color: var(--primaryColor);
+}
+
+.property-description p {
+  color: lightslategray;
+}
+
+.comodidades {
+  display: flex;
+}
+
+.comodidades span {
+  margin-right: 10px;
+}
+
+.margin-top {
+  margin-top: 10px;
+}
+
+.btn {
+  color: var(--primaryColor);
+  background-color: #fff;
+  border: none;
+  outline: none;
+  font-size: 18px;
+}
+
+.btn-ver-mas {
+  display: none;
+}
+
+.btn-card-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 960px) {
+  .card-container {
+    font-size: 18px;
+    background-color: #fff;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 60%;
+    margin-top: 40px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+
+  .property-description-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .imagen-propiedad {
+    height: 250px;
+  }
+
+  .property-description {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 20px;
+  }
+
+  .property-description a {
+    color: rgb(0, 132, 255);
+  }
+
+  .comodidades {
+    color: var(--primaryColor);
+  }
+
+  .property-description p {
+    color: lightslategray;
+  }
+
+  .comodidades {
+    display: flex;
+  }
+
+  .comodidades span {
+    margin-right: 10px;
+  }
+
+  .margin-top {
+    margin-top: 20px;
+  }
+
+  .btn-ver-mas {
+    display: block;
+  }
+
+  .btn-card-container {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+  }
+}
