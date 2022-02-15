@@ -1,0 +1,56 @@
+.nosotros {
+  background-color: #fff;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nosotros-text-container {
+  width: 90%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.quienes-somos {
+  color: var(--primaryColor);
+  margin-bottom: 40px;
+  margin-top: 40px;
+  font-size: 25px;
+}
+
+.nosotros-img {
+  height: 350px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .nosotros-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .nosotros {
+    margin-top: 50px;
+
+    width: 100%;
+    flex-direction: row-reverse;
+    margin-bottom: 50px;
+  }
+  .nosotros-text-container {
+    width: 400px;
+    margin-left: 80px;
+    margin-bottom: 70px;
+  }
+
+  .nosotros-img {
+    height: 400px;
+  }
+}

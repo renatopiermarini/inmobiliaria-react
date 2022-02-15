@@ -1,0 +1,9 @@
+.contacto {
+  /* background-color: rgb(249, 249, 249); */
+  background-color: rgb(249, 249, 249);
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -10,7 +10,9 @@ export const Navbar = () => {
   return (
     <>
       <nav>
-        <img src="../../assets/logo.jpeg" />
+        <a href="/">
+          <img src="../../assets/logo.jpeg" />
+        </a>
         <div className={`links ${clicked ? "active" : ""}`}>
           <a href="/">Inicio</a>
           <a href="#h">Novedades</a>

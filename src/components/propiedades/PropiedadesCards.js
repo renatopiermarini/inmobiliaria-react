@@ -3,7 +3,7 @@ import "./cards.css";
 export const PropiedadesCards = () => {
   return (
     <div className="card-container">
-      <div>
+      <div className="img-property-container">
         <img
           className="imagen-propiedad"
           src="https://st.hzcdn.com/simgs/pictures/living-rooms/living-room-moore-house-design-img~a111971d0d6ade6a_4-9543-1-fd1c78b.jpg"

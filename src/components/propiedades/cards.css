@@ -11,10 +11,20 @@
   width: 90%;
   margin-top: 40px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  flex-wrap: wrap;
+}
+
+.img-property-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imagen-propiedad {
   height: 300px;
+  object-fit: cover;
+  width: 100%;
 }
 
 .property-description {
@@ -69,72 +79,24 @@
   justify-content: center;
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 600px) {
   .card-container {
-    font-size: 18px;
-    background-color: #fff;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    height: auto;
-    border-radius: 10px;
-    overflow: hidden;
-    width: 60%;
-    margin-top: 40px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 400px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    flex-wrap: wrap;
   }
-
-  .property-description-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-  }
-
-  .imagen-propiedad {
-    height: 250px;
-  }
-
   .property-description {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-left: 20px;
-  }
-
-  .property-description a {
-    color: rgb(0, 132, 255);
-  }
-
-  .comodidades {
-    color: var(--primaryColor);
-  }
-
-  .property-description p {
-    color: lightslategray;
-  }
-
-  .comodidades {
-    display: flex;
-  }
-
-  .comodidades span {
+    margin-left: 10px;
     margin-right: 10px;
   }
 
-  .margin-top {
-    margin-top: 20px;
+  .btn-card-container {
+    width: 100%;
+    justify-content: space-evenly;
   }
 
   .btn-ver-mas {
     display: block;
-  }
-
-  .btn-card-container {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 50%;
   }
 }

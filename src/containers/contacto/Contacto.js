@@ -1,3 +1,10 @@
+import { ContactForm } from "../../components/contactform/ContactForm";
+import "./contacto.css";
+
 export const Contacto = () => {
-  return <div>Contacto</div>;
+  return (
+    <div className="contacto">
+      <ContactForm />
+    </div>
+  );
 };
