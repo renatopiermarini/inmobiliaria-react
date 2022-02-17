@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./navbar.css";
 import { BurgerButton } from "./BurgerButton";
+import { Link, NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const [clicked, setClicked] = useState(false);
@@ -10,15 +11,15 @@ export const Navbar = () => {
   return (
     <>
       <nav>
-        <a href="/">
+        <Link to="/">
           <img src="../../assets/logo.jpeg" />
-        </a>
+        </Link>
         <div className={`links ${clicked ? "active" : ""}`}>
           <a href="/">Inicio</a>
-          <a href="#h">Novedades</a>
-          <a href="#h">Propiedades</a>
-          <a href="#h">Nosotros</a>
-          <a href="#h">Contacto</a>
+          <a href="/#novedades">Novedades</a>
+          <NavLink to="/propiedades">Propiedades</NavLink>
+          <a href="/#nosotros">Nosotros</a>
+          <a href="/#contacto">Contacto</a>
         </div>
         <div className="burger">
           <BurgerButton clicked={clicked} handleClick={handleClick} />

@@ -2,7 +2,7 @@ import "./nosotros.css";
 
 export const Nosotros = () => {
   return (
-    <div className="nosotros-section">
+    <div className="nosotros-section" id="nosotros">
       <div className="nosotros">
         <div className="nosotros-text-container">
           <h2 className="quienes-somos">Quienes somos</h2>

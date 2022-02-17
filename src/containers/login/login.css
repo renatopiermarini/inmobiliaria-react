@@ -1,0 +1,57 @@
+.login-section {
+  background-color: var(--primaryColor);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-section h3 {
+  color: white;
+  margin-bottom: 100px;
+  margin-top: -150px;
+}
+
+.form-login {
+  height: 200px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 350px;
+  align-items: center;
+}
+
+.login-input {
+  width: 85%;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.btn-login {
+  background-color: white;
+  color: var(--primaryColor);
+  padding: 10px 20px;
+  border: 1px solid var(--primaryColor);
+  outline: none;
+
+  border-radius: 10px;
+  transition: all 300ms ease;
+}
+
+.btn-login:hover {
+  background-color: var(--primaryColor);
+  color: white;
+}
+
+.btn-login:active {
+  background-color: white;
+  color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+}

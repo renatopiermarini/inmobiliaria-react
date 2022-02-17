@@ -4,7 +4,6 @@ import { Search } from "../../components/search/Search";
 export const Header = () => {
   return (
     <>
-      <Navbar />
       <Search />
     </>
   );
