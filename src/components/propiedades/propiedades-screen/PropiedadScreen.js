@@ -1,38 +1,47 @@
-import { Navbar } from "../../navbar/Navbar";
 import "./propiedad-screen.css";
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+
 import { Footer } from "../../../containers/footer/Footer";
+
+export const propiedad = {
+  titulo: "Alquiler",
+  direccion: "Casa en Misiones Salesianas 1200, Viedma",
+  precio: "$70.000 /mes",
+  caracteristicas: {
+    m2: "60m² construidos",
+    hab: "2 habitaciones",
+    ban: "3 baños",
+    carac1: "Pileta",
+    carac2: "Casa sin amueblar",
+  },
+};
 
 export const PropiedadScreen = () => {
   return (
-    <div>
-      <div>
-        <Navbar />
-      </div>
+    <div id="propiedad">
       <div className="propiedad-screen">
         <div className="propiedad-container">
           <div className="btn-volver-div">
             <a className="btn-volver">Atrás</a>
           </div>
           <div className="propiedad-screen-info">
-            <h2>Alquiler de casa</h2>
+            <h2>{propiedad.titulo}</h2>
 
             <div className="address">
-              <p>Misiones Salesianas 1200, Viedma</p>
+              <p>{propiedad.direccion}</p>
               <a>
                 <span>Ver mapa</span>
               </a>
             </div>
-            <h3>$70.000 /mes</h3>
+            <h3>{propiedad.precio}</h3>
           </div>
           <div className="caracteristicas">
             <h3>Caracteristicas</h3>
             <ul>
-              <li>60m² construidos</li>
-              <li>2 habitaciones</li>
-              <li>3 banos</li>
-              <li>Pileta</li>
-              <li>Casa sin amueblar</li>
+              <li>{propiedad.caracteristicas.m2}</li>
+              <li>{propiedad.caracteristicas.hab}</li>
+              <li>{propiedad.caracteristicas.ban}</li>
+              <li>{propiedad.caracteristicas.carac1}</li>
+              <li>{propiedad.caracteristicas.carac2}</li>
             </ul>
           </div>
           <div className="propiedad-screen-img-container">

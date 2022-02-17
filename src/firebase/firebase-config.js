@@ -1,5 +1,10 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  serverTimestamp,
+} from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
@@ -22,4 +27,33 @@ const login = (email, password) => {
   });
 };
 
-export { app, db, auth, login };
+const uploadProperty = async ({
+  titulo,
+  direccion,
+  precio,
+  descripcion,
+  m2,
+  habs,
+  bans,
+  carac1,
+  carac2,
+  carac3,
+  carac4,
+}) => {
+  await addDoc(collection(db, "propiedades"), {
+    titulo,
+    direccion,
+    precio: precio !== undefined ? precio : "",
+    descripcion,
+    m2: m2 !== undefined ? m2 : "",
+    habs: habs !== undefined ? habs : "",
+    bans: bans !== undefined ? bans : "",
+    carac1: carac1 !== undefined ? carac1 : "",
+    carac2: carac2 !== undefined ? carac2 : "",
+    carac3: carac3 !== undefined ? carac3 : "",
+    carac4: carac4 !== undefined ? carac4 : "",
+    timestamp: serverTimestamp(),
+  });
+};
+
+export { app, db, auth, login, uploadProperty };

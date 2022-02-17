@@ -1,6 +1,4 @@
-import { Navbar } from "../../components/navbar/Navbar";
 import { PropiedadesList } from "../../components/propiedades/PropiedadesList";
-import { Footer } from "../footer/Footer";
 import "./propiedades.css";
 
 export const Propiedades = () => {

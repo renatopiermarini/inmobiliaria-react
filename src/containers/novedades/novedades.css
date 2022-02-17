@@ -5,6 +5,7 @@
   width: 100%;
   background-color: rgb(249, 249, 249);
   align-items: center;
+  justify-content: center;
 }
 
 .novedades {
@@ -14,6 +15,13 @@
   justify-content: center;
   height: auto;
   flex-wrap: wrap;
+  padding-left: 50px;
+}
+
+@media (max-width: 600px) {
+  .novedades {
+    padding-left: 0;
+  }
 }
 
 .novedades-title h1 {
@@ -47,6 +55,7 @@
 
 @media screen and (min-width: 768px) {
   .novedades-section {
+    justify-content: center;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -56,12 +65,13 @@
   }
 
   .novedades {
-    width: 95%;
+    width: 100%;
     flex-direction: row;
-    justify-content: space-evenly;
+
     margin-bottom: 50px;
     flex-wrap: wrap;
-    scroll-behavior: smooth;
+
+    padding-left: 50px;
   }
   .novedades-title {
     margin-top: 50px;

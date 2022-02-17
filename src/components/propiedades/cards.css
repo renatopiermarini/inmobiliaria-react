@@ -1,5 +1,13 @@
 @import "../../styles/global-colors.css";
 
+.card-link {
+  text-decoration: none;
+}
+
+.property-description-container {
+  padding-left: 10px;
+}
+
 .card-container {
   background-color: #fff;
   height: 500px;
@@ -36,6 +44,19 @@
   padding-left: 10px;
 }
 
+.property-description h2,
+h3 {
+  color: black;
+}
+
+.property-description h2 {
+  margin-top: 15px;
+}
+
+.property-description h3 {
+  margin-left: 0;
+}
+
 .property-description a {
   color: rgb(0, 132, 255);
 }
@@ -44,8 +65,10 @@
   color: var(--primaryColor);
 }
 
-.property-description p {
+.property-description-container p {
   color: lightslategray;
+  margin-left: 5px;
+  padding-right: 5px;
 }
 
 .comodidades {
@@ -66,6 +89,7 @@
   border: none;
   outline: none;
   font-size: 18px;
+  text-decoration: none;
 }
 
 .btn-ver-mas {
@@ -80,11 +104,18 @@
 }
 
 @media screen and (min-width: 600px) {
+  .property-description-container p {
+    color: lightslategray;
+    margin-left: 20px;
+    padding-right: 10px;
+  }
+
   .card-container {
     width: 400px;
     margin-bottom: 50px;
-    margin-right: 50px;
     flex-wrap: wrap;
+    margin-right: 30px;
+    margin-left: 30px;
   }
   .property-description {
     margin-left: 10px;
@@ -98,5 +129,6 @@
 
   .btn-ver-mas {
     display: block;
+    text-decoration: none;
   }
 }

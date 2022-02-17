@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
+import { PropiedadScreen } from "../components/propiedades/propiedades-screen/PropiedadScreen";
 
 import { Login } from "../containers/login/Login";
 
@@ -17,6 +18,8 @@ export const DashboardRoutes = () => {
           <Route path="propiedades" element={<Propiedades />} />
 
           <Route path="login" element={<Login />} />
+
+          <Route path="propiedad" element={<PropiedadScreen />} />
 
           <Route path="/" element={<Home />} />
         </Routes>

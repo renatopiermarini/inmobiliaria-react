@@ -1,37 +1,66 @@
+import { Link } from "react-router-dom";
 import "./cards.css";
 
-export const PropiedadesCards = () => {
-  return (
-    <div className="card-container">
-      <div className="img-property-container">
-        <img
-          className="imagen-propiedad"
-          src="https://st.hzcdn.com/simgs/pictures/living-rooms/living-room-moore-house-design-img~a111971d0d6ade6a_4-9543-1-fd1c78b.jpg"
-        />
-      </div>
-      <div className="property-description-container">
-        <div className="property-description">
-          <a className="margin-top">
-            Casa en calle Misiones Salesianas 1200, Vie...
-          </a>
-          <h2 className="margin-top">US$ 120.000</h2>
-          <div className="comodidades">
-            <span className="margin-top">3 hab.</span>
-            <span className="margin-top">2 baños</span>
-            <span className="margin-top">75 m²</span>
-            <span className="margin-top"> 2 plantas</span>
-          </div>
-          <p className="margin-top">
-            Commodo ea consequat voluptate ullamco. Elit reprehenderit laboris
-            magna velit nostrud. Excepteur ullamco officia quis tempor...
-          </p>
-        </div>
+export const PropiedadesCards = ({
+  titulo,
+  direccion,
+  precio,
+  habs,
+  bans,
+  m2,
+  carac1,
+  descripcion,
+}) => {
+  const auth = localStorage.getItem("usuario") || "";
 
-        <div className="btn-card-container">
-          <button className="btn btn-llamar">Contactar</button>
-          <button className="btn btn-ver-mas">Ver mas</button>
+  return (
+    <>
+      <div className="card-container">
+        <Link to="/propiedad" className="card-link">
+          <div className="img-property-container">
+            <img
+              className="imagen-propiedad"
+              src="https://st.hzcdn.com/simgs/pictures/living-rooms/living-room-moore-house-design-img~a111971d0d6ade6a_4-9543-1-fd1c78b.jpg"
+            />
+          </div>
+        </Link>
+
+        <div className="property-description-container">
+          <Link to="/propiedad" className="card-link">
+            <div className="property-description">
+              <h2>{titulo}</h2>
+              <span className="margin-top">{direccion}</span>
+
+              <h3>{precio}</h3>
+              <div className="comodidades">
+                <span className="margin-top">{habs.substring(0, 5)}</span>
+                <span className="margin-top">{bans.substring(0, 5)}</span>
+                <span className="margin-top">{m2.substring(0, 4)}</span>
+                <span className="margin-top">{carac1}</span>
+              </div>
+            </div>
+          </Link>
+          <p className="margin-top">{descripcion.substring(0, 150)}</p>
+          <div className="btn-card-container">
+            {auth ? (
+              <div className="btn-card-container">
+                <button className="btn edit">Editar</button>{" "}
+                <button className="btn delete">Eliminar</button>
+              </div>
+            ) : (
+              <div className="btn-card-container">
+                <a href="/#contacto" className="btn btn-llamar">
+                  Contactar
+                </a>
+
+                <Link to="/propiedad" className="btn btn-ver-mas">
+                  Ver mas
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
