@@ -15,7 +15,7 @@
 }
 
 .propiedad-screen-info {
-  height: 110px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,6 +113,19 @@ h3 {
     align-items: center;
     justify-content: center;
     background-color: rgb(249, 249, 249);
+  }
+
+  .address {
+    margin-bottom: 20px;
+  }
+
+  .propiedad-screen-info h2 {
+    margin-top: 20px;
+  }
+
+  .propiedad-screen-info h2,
+  h3 {
+    margin-bottom: 20px;
   }
 
   .propiedad-container {

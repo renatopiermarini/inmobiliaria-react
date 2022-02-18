@@ -1,8 +1,9 @@
 import "./login.css";
 import { useRef, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
-import { login } from "../../firebase/firebase-config";
+import { Navigate, useNavigate } from "react-router-dom";
+import { auth, login } from "../../firebase/firebase-config";
+import { Redirect } from "react-router-dom";
 // import { AuthContext } from "../../context/authContext";
 // import { AuthProvider } from "../../context/authContext";
 // import { signInWithEmailAndPassword } from "firebase/auth";

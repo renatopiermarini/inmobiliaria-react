@@ -15,7 +15,8 @@
   justify-content: center;
   height: auto;
   flex-wrap: wrap;
-  padding-left: 50px;
+
+  background-color: rgb(249, 249, 249);
 }
 
 @media (max-width: 600px) {
@@ -62,17 +63,17 @@
     width: 100%;
     align-items: center;
     background-color: rgb(249, 249, 249);
+    margin-left: 0;
   }
 
   .novedades {
     width: 100%;
     flex-direction: row;
-
-    margin-bottom: 50px;
     flex-wrap: wrap;
-
-    padding-left: 50px;
+    padding-left: 0;
+    background-color: rgb(249, 249, 249);
   }
+
   .novedades-title {
     margin-top: 50px;
     margin-bottom: 10px;
@@ -84,9 +85,10 @@
     color: white;
     border: none;
     outline: none;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     border-radius: 10px;
     transition: all 300ms ease;
+    cursor: pointer;
   }
 
   .btn-see-all:hover {

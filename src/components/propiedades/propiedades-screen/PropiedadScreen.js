@@ -1,21 +1,23 @@
+import { getDoc, doc } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { db } from "../../../firebase/firebase-config";
 import "./propiedad-screen.css";
 
-import { Footer } from "../../../containers/footer/Footer";
-
-export const propiedad = {
-  titulo: "Alquiler",
-  direccion: "Casa en Misiones Salesianas 1200, Viedma",
-  precio: "$70.000 /mes",
-  caracteristicas: {
-    m2: "60m² construidos",
-    hab: "2 habitaciones",
-    ban: "3 baños",
-    carac1: "Pileta",
-    carac2: "Casa sin amueblar",
-  },
-};
-
 export const PropiedadScreen = () => {
+  const { propiedadId } = useParams();
+
+  const [propiedad, setPropiedad] = useState([]);
+
+  useEffect(() => {
+    const funcionaWachoDale = doc(db, "propiedades", propiedadId);
+
+    getDoc(funcionaWachoDale).then((data) => {
+      setPropiedad(data.data());
+    });
+  }, []);
+
+  console.log(propiedad);
   return (
     <div id="propiedad">
       <div className="propiedad-screen">
@@ -24,24 +26,27 @@ export const PropiedadScreen = () => {
             <a className="btn-volver">Atrás</a>
           </div>
           <div className="propiedad-screen-info">
-            <h2>{propiedad.titulo}</h2>
+            <h2>{propiedad?.titulo}</h2>
 
             <div className="address">
-              <p>{propiedad.direccion}</p>
+              <p>{propiedad?.direccion}</p>
               <a>
                 <span>Ver mapa</span>
               </a>
             </div>
-            <h3>{propiedad.precio}</h3>
+            <h3>{propiedad?.precio}</h3>
           </div>
           <div className="caracteristicas">
             <h3>Caracteristicas</h3>
             <ul>
-              <li>{propiedad.caracteristicas.m2}</li>
-              <li>{propiedad.caracteristicas.hab}</li>
-              <li>{propiedad.caracteristicas.ban}</li>
-              <li>{propiedad.caracteristicas.carac1}</li>
-              <li>{propiedad.caracteristicas.carac2}</li>
+              {/* Aca deberia mapear las caracteristicas segun existan o no */}
+              <li>{propiedad?.habs}</li>
+              <li>{propiedad?.bans}</li>
+              <li>{propiedad?.m2}</li>
+              {propiedad.carac1 !== "" && <li>{propiedad?.carac1}</li>}
+              {propiedad.carac2 !== "" && <li>{propiedad?.carac2}</li>}
+              {propiedad.carac3 !== "" && <li>{propiedad?.carac3}</li>}
+              {propiedad.carac4 !== "" && <li>{propiedad?.carac4}</li>}
             </ul>
           </div>
           <div className="propiedad-screen-img-container">
@@ -59,17 +64,7 @@ export const PropiedadScreen = () => {
             />
             <button className="btn-ver-all-img">VER TODAS LAS FOTOS</button>
 
-            <p>
-              Voluptate voluptate ullamco reprehenderit duis laborum cillum
-              laboris laboris. Elit dolor anim aute exercitation et ex ut dolore
-              ut sint nulla. Sint aliquip et adipisicing sunt fugiat culpa
-              fugiat irure veniam labore in. Lorem eiusmod laborum deserunt
-              fugiat. Deserunt magna quis eiusmod ea anim exercitation minim
-              laboris adipisicing dolor anim dolore. Voluptate exercitation
-              fugiat fugiat quis id amet fugiat duis culpa enim nulla qui mollit
-              ex. Sit reprehenderit excepteur esse sit ut ullamco voluptate ea
-              in reprehenderit.
-            </p>
+            <p>{propiedad?.descripcion}</p>
           </div>
           <div className="mapa">aca va el mapa</div>
           <div className="btn-propiedades-contactar">
@@ -77,7 +72,6 @@ export const PropiedadScreen = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

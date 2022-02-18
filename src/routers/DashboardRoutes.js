@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
 import { PropiedadScreen } from "../components/propiedades/propiedades-screen/PropiedadScreen";
+import { Footer } from "../containers/footer/Footer";
 
 import { Login } from "../containers/login/Login";
 
@@ -19,11 +20,12 @@ export const DashboardRoutes = () => {
 
           <Route path="login" element={<Login />} />
 
-          <Route path="propiedad" element={<PropiedadScreen />} />
+          <Route path="propiedad/:propiedadId" element={<PropiedadScreen />} />
 
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 };

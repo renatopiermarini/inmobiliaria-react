@@ -30,7 +30,7 @@ export const Novedades = () => {
   );
 
   return (
-    <div className="novedades-section" id="novedades">
+    <div className="novedades" id="novedades">
       <div className="novedades-title">
         <h1>Propiedades Destacadas</h1>
       </div>
@@ -39,14 +39,15 @@ export const Novedades = () => {
           propiedades.map((propiedad) => (
             <PropiedadesCards
               key={propiedad.id}
-              titulo={propiedad.data().titulo}
-              direccion={propiedad.data().direccion}
-              precio={propiedad.data().precio}
-              habs={propiedad.data().habs}
-              bans={propiedad.data().bans}
-              m2={propiedad.data().m2}
-              carac1={propiedad.data().carac1}
-              descripcion={propiedad.data().descripcion}
+              id={propiedad?.id}
+              titulo={propiedad?.data().titulo}
+              direccion={propiedad?.data().direccion}
+              precio={propiedad?.data().precio}
+              habs={propiedad?.data().habs}
+              bans={propiedad?.data().bans}
+              m2={propiedad?.data().m2}
+              carac1={propiedad?.data().carac1}
+              descripcion={propiedad?.data().descripcion}
             />
           ))}
       </div>

@@ -1,6 +1,6 @@
 import { PropiedadesCards } from "./PropiedadesCards";
 import "./list.css";
-import { Footer } from "../../containers/footer/Footer";
+
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
@@ -18,7 +18,7 @@ export const PropiedadesList = () => {
       ),
     []
   );
-
+  console.log(propiedades);
   return (
     <div>
       <div className="list">
@@ -26,18 +26,18 @@ export const PropiedadesList = () => {
           propiedades.map((propiedad) => (
             <PropiedadesCards
               key={propiedad.id}
-              titulo={propiedad.data().titulo}
-              direccion={propiedad.data().direccion}
-              precio={propiedad.data().precio}
-              habs={propiedad.data().habs}
-              bans={propiedad.data().bans}
-              m2={propiedad.data().m2}
-              carac1={propiedad.data().carac1}
-              descripcion={propiedad.data().descripcion}
+              id={propiedad?.id}
+              titulo={propiedad?.data().titulo}
+              direccion={propiedad?.data().direccion}
+              precio={propiedad?.data().precio}
+              habs={propiedad?.data().habs}
+              bans={propiedad?.data().bans}
+              m2={propiedad?.data().m2}
+              carac1={propiedad?.data().carac1}
+              descripcion={propiedad?.data().descripcion}
             />
           ))}
       </div>
-      <Footer />
     </div>
   );
 };

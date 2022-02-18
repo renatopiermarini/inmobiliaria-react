@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./cards.css";
 
 export const PropiedadesCards = ({
+  id,
   titulo,
   direccion,
   precio,
@@ -13,10 +14,12 @@ export const PropiedadesCards = ({
 }) => {
   const auth = localStorage.getItem("usuario") || "";
 
+  console.log(id);
+
   return (
     <>
       <div className="card-container">
-        <Link to="/propiedad" className="card-link">
+        <Link to={`/propiedad/${id}`} className="card-link">
           <div className="img-property-container">
             <img
               className="imagen-propiedad"
@@ -26,7 +29,7 @@ export const PropiedadesCards = ({
         </Link>
 
         <div className="property-description-container">
-          <Link to="/propiedad" className="card-link">
+          <Link to={`/propiedad/${id}`} className="card-link">
             <div className="property-description">
               <h2>{titulo}</h2>
               <span className="margin-top">{direccion}</span>
@@ -44,7 +47,6 @@ export const PropiedadesCards = ({
           <div className="btn-card-container">
             {auth ? (
               <div className="btn-card-container">
-                <button className="btn edit">Editar</button>{" "}
                 <button className="btn delete">Eliminar</button>
               </div>
             ) : (
@@ -53,7 +55,7 @@ export const PropiedadesCards = ({
                   Contactar
                 </a>
 
-                <Link to="/propiedad" className="btn btn-ver-mas">
+                <Link to={`/propiedad/${id}`} className="btn btn-ver-mas">
                   Ver mas
                 </Link>
               </div>
