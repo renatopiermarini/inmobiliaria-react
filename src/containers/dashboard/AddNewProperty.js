@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./addnewproperty.css";
 import { uploadProperty } from "../../firebase/firebase-config";
+import swal from "sweetalert";
+import "animate.css";
 
 export const AddNewProperty = () => {
   // const propiedad = {
@@ -16,6 +18,7 @@ export const AddNewProperty = () => {
   //   },
 
   const [titulo, setTitulo] = useState("");
+  const [tipo, setTipo] = useState("");
   const [direccion, setDireccion] = useState("");
   const [precio, setPrecio] = useState("");
   const [habs, setHabs] = useState("");
@@ -34,6 +37,7 @@ export const AddNewProperty = () => {
     setLoading(true);
     if (titulo !== "" && descripcion !== "" && direccion !== "") {
       await uploadProperty({
+        tipo,
         titulo,
         direccion,
         precio,
@@ -45,13 +49,31 @@ export const AddNewProperty = () => {
         carac2,
         carac3,
         carac4,
-      });
+      }).then(
+        swal({
+          text: "Propiedad cargada correctamente",
+          icon: "success",
+          timer: "2000",
+        })
+      );
+      setTitulo("");
+      setTipo("");
+      setDireccion("");
+      setPrecio("");
+      setHabs("");
+      setBans("");
+      setM2("");
+      setCarac1("");
+      setCarac2("");
+      setCarac3("");
+      setCarac4("");
+      setDescripcion("");
       setLoading(false);
     }
   };
 
   return (
-    <div className="add-section">
+    <div className="add-section contacto animate__animated animate__fadeIn">
       <h2>Añadir nueva propiedad</h2>
       <form className="form-section" onSubmit={handleSubmit}>
         <div className="add-form-section">
@@ -60,8 +82,28 @@ export const AddNewProperty = () => {
             value={titulo}
             className="add-title"
             type="text"
-            placeholder="Titulo"
+            placeholder="Titulo. Tiene que contener 'venta' o 'alquiler'"
           />
+          <select
+            className="add-title select-title"
+            onChange={(e) => setTipo(e.target.value)}
+          >
+            <option value="default" className="disabled" hidden>
+              Tipo de propiedad
+            </option>
+            <option value="casa">Casa</option>
+            <option value="departamento">Departamento</option>
+            <option value="terreno">Lote</option>
+            <option value="local">Local comercial</option>
+            <option value="terreno">Chacras / Campos</option>
+          </select>
+          {/* <input
+            onChange={(e) => setTipo(e.target.value.toLocaleLowerCase())}
+            value={tipo}
+            className="add-title tipo"
+            type="text"
+            placeholder="Tipo de propiedad"
+          /> */}
           <input
             onChange={(e) => setDireccion(e.target.value)}
             value={direccion}
@@ -70,10 +112,10 @@ export const AddNewProperty = () => {
             placeholder="Direccion"
           />
           <input
-            onChange={(e) => setPrecio(e.target.value)}
+            onChange={(e) => setPrecio(parseInt(e.target.value))}
             value={precio}
             className="direc-price"
-            type="text"
+            type="number"
             placeholder="Precio"
           />
           <input

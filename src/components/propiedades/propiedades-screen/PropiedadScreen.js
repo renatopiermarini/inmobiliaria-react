@@ -1,12 +1,13 @@
 import { getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../../firebase/firebase-config";
 import "./propiedad-screen.css";
 
 export const PropiedadScreen = () => {
   const { propiedadId } = useParams();
-
+  const navigate = useNavigate();
   const [propiedad, setPropiedad] = useState([]);
 
   useEffect(() => {
@@ -23,7 +24,9 @@ export const PropiedadScreen = () => {
       <div className="propiedad-screen">
         <div className="propiedad-container">
           <div className="btn-volver-div">
-            <a className="btn-volver">Atrás</a>
+            <button className="btn-volver" onClick={() => navigate(-1)}>
+              Atrás
+            </button>
           </div>
           <div className="propiedad-screen-info">
             <h2>{propiedad?.titulo}</h2>
@@ -34,15 +37,15 @@ export const PropiedadScreen = () => {
                 <span>Ver mapa</span>
               </a>
             </div>
-            <h3>{propiedad?.precio}</h3>
+            <h3>{"$ " + propiedad?.precio}</h3>
           </div>
           <div className="caracteristicas">
             <h3>Caracteristicas</h3>
             <ul>
               {/* Aca deberia mapear las caracteristicas segun existan o no */}
-              <li>{propiedad?.habs}</li>
-              <li>{propiedad?.bans}</li>
-              <li>{propiedad?.m2}</li>
+              <li>{propiedad?.habs + " habitaciones"}</li>
+              <li>{propiedad?.bans + " baños"}</li>
+              <li>{propiedad?.m2 + " m²"}</li>
               {propiedad.carac1 !== "" && <li>{propiedad?.carac1}</li>}
               {propiedad.carac2 !== "" && <li>{propiedad?.carac2}</li>}
               {propiedad.carac3 !== "" && <li>{propiedad?.carac3}</li>}

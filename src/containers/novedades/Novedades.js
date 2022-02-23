@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PropiedadesCards } from "../../components/propiedades/PropiedadesCards";
 import "./novedades.css";
+import "animate.css";
 
 export const Novedades = () => {
   const [propiedades, setPropiedades] = useState([]);
@@ -30,7 +31,7 @@ export const Novedades = () => {
   );
 
   return (
-    <div className="novedades" id="novedades">
+    <div className="novedades animate__animated animate__fadeIn" id="novedades">
       <div className="novedades-title">
         <h1>Propiedades Destacadas</h1>
       </div>

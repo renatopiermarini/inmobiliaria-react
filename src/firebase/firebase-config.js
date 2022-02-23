@@ -28,6 +28,7 @@ const login = (email, password) => {
 };
 
 const uploadProperty = async ({
+  tipo,
   titulo,
   direccion,
   precio,
@@ -41,6 +42,7 @@ const uploadProperty = async ({
   carac4,
 }) => {
   await addDoc(collection(db, "propiedades"), {
+    tipo,
     titulo,
     direccion,
     precio: precio !== undefined ? precio : "",

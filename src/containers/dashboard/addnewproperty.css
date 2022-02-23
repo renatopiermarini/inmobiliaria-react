@@ -46,11 +46,14 @@
   margin-top: 30px;
   width: 400px;
   padding: 10px 20px;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 10px;
   border: none;
   outline: none;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.tipo {
   margin-bottom: 30px;
 }
 
@@ -125,4 +128,8 @@
   color: white;
   border: 1px solid white;
   outline: 1px solid white;
+}
+
+.select-title {
+  margin-bottom: 30px;
 }

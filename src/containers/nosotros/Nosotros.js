@@ -1,8 +1,11 @@
 import "./nosotros.css";
-
+import "animate.css";
 export const Nosotros = () => {
   return (
-    <div className="nosotros-section" id="nosotros">
+    <div
+      className="nosotros-section animate__animated animate__fadeIn"
+      id="nosotros"
+    >
       <div className="nosotros">
         <div className="nosotros-text-container">
           <h2 className="quienes-somos">Quienes somos</h2>

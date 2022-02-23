@@ -1,9 +1,9 @@
 import "./login.css";
 import { useRef, useState } from "react";
+import "animate.css";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../firebase/firebase-config";
 
-import { Navigate, useNavigate } from "react-router-dom";
-import { auth, login } from "../../firebase/firebase-config";
-import { Redirect } from "react-router-dom";
 // import { AuthContext } from "../../context/authContext";
 // import { AuthProvider } from "../../context/authContext";
 // import { signInWithEmailAndPassword } from "firebase/auth";
@@ -29,7 +29,7 @@ export const Login = () => {
         localStorage.setItem("usuario", user.uid);
       });
 
-      history("/");
+      history("/dashboard");
     } catch (err) {
       setError(err);
     }
@@ -38,7 +38,7 @@ export const Login = () => {
   }
 
   return (
-    <div className="login-section">
+    <div className="login-section animate__animated animate__fadeIn">
       <h3 className="login-h3">
         Si no eres el administrador de esta web, por favor vuelve al inicio.
       </h3>

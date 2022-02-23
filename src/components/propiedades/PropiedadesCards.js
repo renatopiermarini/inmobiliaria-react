@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import "./cards.css";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase/firebase-config";
+import swal from "sweetalert";
 
 export const PropiedadesCards = ({
   id,
@@ -14,7 +17,27 @@ export const PropiedadesCards = ({
 }) => {
   const auth = localStorage.getItem("usuario") || "";
 
-  console.log(id);
+  const mostrarAlerta = () => {
+    swal({
+      title: "Vos decis bro?",
+      text: "Estas seguro que deseas eliminar esta propiedad?",
+      icon: "warning",
+      buttons: ["No, casi la cago", "Obvio pa"],
+    }).then((respuesta) => {
+      if (respuesta) {
+        handleDelete();
+        swal({
+          text: "La propiedad fue eliminada",
+          icon: "success",
+          timer: "2000",
+        });
+      }
+    });
+  };
+
+  const handleDelete = () => {
+    deleteDoc(doc(db, `propiedades/${id}`));
+  };
 
   return (
     <>
@@ -34,11 +57,15 @@ export const PropiedadesCards = ({
               <h2>{titulo}</h2>
               <span className="margin-top">{direccion}</span>
 
-              <h3>{precio}</h3>
+              <h3>{"$ " + precio}</h3>
               <div className="comodidades">
-                <span className="margin-top">{habs.substring(0, 5)}</span>
-                <span className="margin-top">{bans.substring(0, 5)}</span>
-                <span className="margin-top">{m2.substring(0, 4)}</span>
+                <span className="margin-top">
+                  {habs.substring(0, 5) + " habitaciones".substring(0, 4)}
+                </span>
+                <span className="margin-top">
+                  {bans.substring(0, 5) + " baños".substring(0, 4)}
+                </span>
+                <span className="margin-top">{m2 + " m²".substring(0, 4)}</span>
                 <span className="margin-top">{carac1}</span>
               </div>
             </div>
@@ -47,7 +74,9 @@ export const PropiedadesCards = ({
           <div className="btn-card-container">
             {auth ? (
               <div className="btn-card-container">
-                <button className="btn delete">Eliminar</button>
+                <button className="btn delete" onClick={mostrarAlerta}>
+                  Eliminar
+                </button>
               </div>
             ) : (
               <div className="btn-card-container">

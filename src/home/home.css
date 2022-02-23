@@ -1,3 +1,9 @@
 .home {
   background-color: white;
 }
+
+.whatsapp-button {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}

@@ -1,6 +1,6 @@
 import { PropiedadesCards } from "./PropiedadesCards";
 import "./list.css";
-
+import "animate.css";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
@@ -21,7 +21,7 @@ export const PropiedadesList = () => {
   console.log(propiedades);
   return (
     <div>
-      <div className="list">
+      <div className="list animate__animated animate__fadeIn">
         {propiedades.length !== 0 &&
           propiedades.map((propiedad) => (
             <PropiedadesCards

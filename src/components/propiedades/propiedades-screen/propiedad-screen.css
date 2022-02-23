@@ -11,7 +11,13 @@
 
 .btn-volver {
   color: var(--primaryColor);
-  margin-left: 20px;
+  margin-top: 5px;
+  background-color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  cursor: pointer;
 }
 
 .propiedad-screen-info {
@@ -90,6 +96,7 @@ h3 {
   outline: none;
   border-radius: 10px;
   margin-bottom: 40px;
+  cursor: pointer;
 }
 
 .mapa {
