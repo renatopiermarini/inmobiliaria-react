@@ -1,5 +1,6 @@
 import { getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../../firebase/firebase-config";
@@ -109,7 +110,9 @@ export const PropiedadScreen = () => {
           </div>
           <div className="mapa">aca va el mapa</div>
           <div className="btn-propiedades-contactar">
-            <button className="btn-contact">CONTACTAR</button>
+            <a href="/#contacto" className="btn-contact">
+              CONTACTAR
+            </a>
           </div>
         </div>
       </div>

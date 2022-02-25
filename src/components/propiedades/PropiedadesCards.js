@@ -41,7 +41,7 @@ export const PropiedadesCards = ({
   };
 
   return (
-    <>
+    <div className="card-container-div animate__animated animate__fadeIn">
       <div className="card-container">
         <Link to={`/propiedad/${id}`} className="card-link">
           <div className="img-property-container">
@@ -71,30 +71,30 @@ export const PropiedadesCards = ({
                 <span className="margin-top">{m2 + " m²".substring(0, 4)}</span>
                 <span className="margin-top">{carac1}</span>
               </div>
+              <p className="margin-top">{descripcion.substring(0, 85)}</p>
             </div>
           </Link>
-          <p className="margin-top">{descripcion.substring(0, 150)}</p>
-          <div className="btn-card-container">
-            {auth ? (
-              <div className="btn-card-container">
-                <button className="btn delete" onClick={mostrarAlerta}>
-                  Eliminar
-                </button>
-              </div>
-            ) : (
-              <div className="btn-card-container">
-                <a href="/#contacto" className="btn btn-llamar">
-                  Contactar
-                </a>
+        </div>
+        <div className="btn-card-container">
+          {auth ? (
+            <div className="btn-card-container">
+              <button className="btn delete" onClick={mostrarAlerta}>
+                Eliminar
+              </button>
+            </div>
+          ) : (
+            <div className="btn-card-container">
+              <a href="/#contacto" className="btn btn-llamar">
+                Contactar
+              </a>
 
-                <Link to={`/propiedad/${id}`} className="btn btn-ver-mas">
-                  Ver mas
-                </Link>
-              </div>
-            )}
-          </div>
+              <Link to={`/propiedad/${id}`} className="btn btn-ver-mas">
+                Ver mas
+              </Link>
+            </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };

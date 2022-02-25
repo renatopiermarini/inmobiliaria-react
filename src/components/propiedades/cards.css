@@ -4,8 +4,10 @@
   text-decoration: none;
 }
 
-.property-description-container {
-  padding-left: 10px;
+.card-container-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-container {
@@ -35,13 +37,15 @@
   width: 100%;
 }
 
+.property-description-container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .property-description {
   display: flex;
   flex-direction: column;
-
   height: 100%;
-  padding-right: 5px;
-  padding-left: 10px;
 }
 
 .property-description h2,
@@ -110,25 +114,34 @@ h3 {
 @media screen and (min-width: 600px) {
   .property-description-container p {
     color: lightslategray;
-    margin-left: 20px;
-    padding-right: 10px;
+    overflow: hidden;
   }
 
-  .card-container {
-    width: 400px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
+  .property-description-container {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .imagen-propiedad {
+    height: 280px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .card-container-div {
     margin-right: 30px;
     margin-left: 30px;
   }
-  .property-description {
-    margin-left: 10px;
-    margin-right: 10px;
+
+  .card-container {
+    height: 550px;
+    width: 400px;
   }
 
   .btn-card-container {
-    width: 100%;
+    margin-top: 2px;
     justify-content: space-evenly;
+    width: 100%;
   }
 
   .btn-ver-mas {

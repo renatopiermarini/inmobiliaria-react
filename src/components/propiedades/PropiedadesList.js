@@ -1,5 +1,6 @@
 import { PropiedadesCards } from "./PropiedadesCards";
 import "./list.css";
+import "./cards.css";
 import "animate.css";
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
@@ -29,25 +30,20 @@ export const PropiedadesList = () => {
         ) : (
           propiedades.length !== 0 &&
           propiedades.map((propiedad) => (
-            <div
+            <PropiedadesCards
               key={propiedad.id}
-              className="novedades-card-div-animate animate__animated animate__fadeIn"
-            >
-              <PropiedadesCards
-                key={propiedad.id}
-                image={propiedad?.data().image}
-                imagen7={propiedad?.data().imagen7}
-                id={propiedad?.id}
-                titulo={propiedad?.data().titulo}
-                direccion={propiedad?.data().direccion}
-                precio={propiedad?.data().precio}
-                habs={propiedad?.data().habs}
-                bans={propiedad?.data().bans}
-                m2={propiedad?.data().m2}
-                carac1={propiedad?.data().carac1}
-                descripcion={propiedad?.data().descripcion}
-              />
-            </div>
+              image={propiedad?.data().image}
+              imagen7={propiedad?.data().imagen7}
+              id={propiedad?.id}
+              titulo={propiedad?.data().titulo}
+              direccion={propiedad?.data().direccion}
+              precio={propiedad?.data().precio}
+              habs={propiedad?.data().habs}
+              bans={propiedad?.data().bans}
+              m2={propiedad?.data().m2}
+              carac1={propiedad?.data().carac1}
+              descripcion={propiedad?.data().descripcion}
+            />
           ))
         )}
       </div>
