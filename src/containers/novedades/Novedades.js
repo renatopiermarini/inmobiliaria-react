@@ -11,9 +11,11 @@ import { Link } from "react-router-dom";
 import { PropiedadesCards } from "../../components/propiedades/PropiedadesCards";
 import "./novedades.css";
 import "animate.css";
+import { LoadingCard } from "../../components/propiedades/LoadingCard";
 
 export const Novedades = () => {
   const [propiedades, setPropiedades] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(
     () =>
@@ -24,6 +26,7 @@ export const Novedades = () => {
           limit(4)
         ),
         (snapshot) => {
+          setLoading(false);
           setPropiedades(snapshot.docs);
         }
       ),
@@ -31,26 +34,38 @@ export const Novedades = () => {
   );
 
   return (
-    <div className="novedades animate__animated animate__fadeIn" id="novedades">
+    <div className="novedades" id="novedades">
       <div className="novedades-title">
         <h1>Propiedades Destacadas</h1>
       </div>
       <div className="novedades">
-        {propiedades.length !== 0 &&
-          propiedades.map((propiedad) => (
-            <PropiedadesCards
-              key={propiedad.id}
-              id={propiedad?.id}
-              titulo={propiedad?.data().titulo}
-              direccion={propiedad?.data().direccion}
-              precio={propiedad?.data().precio}
-              habs={propiedad?.data().habs}
-              bans={propiedad?.data().bans}
-              m2={propiedad?.data().m2}
-              carac1={propiedad?.data().carac1}
-              descripcion={propiedad?.data().descripcion}
-            />
-          ))}
+        {loading ? (
+          <LoadingCard />
+        ) : (
+          propiedades.map(
+            (propiedad) =>
+              propiedades.length !== 0 && (
+                <div
+                  key={propiedad.id}
+                  className="novedades-card-div-animate animate__animated animate__fadeIn"
+                >
+                  <PropiedadesCards
+                    key={propiedad.id}
+                    image={propiedad?.data().image}
+                    id={propiedad?.id}
+                    titulo={propiedad?.data().titulo}
+                    direccion={propiedad?.data().direccion}
+                    precio={propiedad?.data().precio}
+                    habs={propiedad?.data().habs}
+                    bans={propiedad?.data().bans}
+                    m2={propiedad?.data().m2}
+                    carac1={propiedad?.data().carac1}
+                    descripcion={propiedad?.data().descripcion}
+                  />
+                </div>
+              )
+          )
+        )}
       </div>
       <div>
         <Link to="/propiedades">

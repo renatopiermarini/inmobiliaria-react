@@ -15,8 +15,15 @@
   justify-content: center;
   height: auto;
   flex-wrap: wrap;
-
   background-color: rgb(249, 249, 249);
+}
+
+.novedades-card-div-animate {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 
 @media (max-width: 600px) {

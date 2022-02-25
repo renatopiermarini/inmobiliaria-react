@@ -1,22 +1,14 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./addnewproperty.css";
 import { uploadProperty } from "../../firebase/firebase-config";
 import swal from "sweetalert";
 import "animate.css";
 
 export const AddNewProperty = () => {
-  // const propiedad = {
-  //   titulo: "Alquiler",
-  //   direccion: "Casa en Misiones Salesianas 1200, Viedma",
-  //   precio: "$70.000 /mes",
-  //   caracteristicas: {
-  //     m2: "60m² construidos",
-  //     hab: "2 habitaciones",
-  //     ban: "3 baños",
-  //     carac1: "Pileta",
-  //     carac2: "Casa sin amueblar",
-  //   },
+  const [imagenPrincipal, setImagenPrincipal] = useState("");
 
+  const [imagen7, setImagen7] = useState([]);
+  const [operacion, setOperacion] = useState("");
   const [titulo, setTitulo] = useState("");
   const [tipo, setTipo] = useState("");
   const [direccion, setDireccion] = useState("");
@@ -32,11 +24,67 @@ export const AddNewProperty = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const imagePrincipalRef = useRef(null);
+  const image2Ref = useRef(null);
+  const image3Ref = useRef(null);
+  const image4Ref = useRef(null);
+  const image5Ref = useRef(null);
+  const image6Ref = useRef(null);
+  const image7Ref = useRef(null);
+
+  const uploadImagenPrincipal = async (e) => {
+    const file_extension = imagePrincipalRef?.current?.value
+      ?.split("\\")[2]
+      .split(".")[1];
+    if (
+      file_extension === "png" ||
+      file_extension === "jpg" ||
+      file_extension === "jpge" ||
+      file_extension === "gif" ||
+      file_extension === "webp"
+    ) {
+      const reader = new FileReader();
+      if (e.target.files[0]) {
+        reader.readAsDataURL(e.target.files[0]);
+      }
+      reader.onload = (readerEvent) => {
+        setImagenPrincipal(readerEvent.target.result);
+      };
+    } else {
+      swal({
+        text: "Formato de imagen no valido",
+        icon: "danger",
+        timer: "2000",
+      });
+    }
+  };
+
+  const uploadImagen7 = async (e) => {
+    console.log(e.target.files);
+
+    let photoArchivo = [];
+
+    for (let i = 0; i < e.target.files.length; i++) {
+      const photo = e.target.files[i];
+      const reader = new FileReader();
+      if (photo) {
+        reader.readAsDataURL(photo);
+      }
+      reader.onload = (readerEvent) => {
+        photoArchivo[i] = [readerEvent.target.result];
+        setImagen7(photoArchivo);
+      };
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     if (titulo !== "" && descripcion !== "" && direccion !== "") {
       await uploadProperty({
+        imagenPrincipal,
+        imagen7,
+        operacion,
         tipo,
         titulo,
         direccion,
@@ -51,11 +99,13 @@ export const AddNewProperty = () => {
         carac4,
       }).then(
         swal({
-          text: "Propiedad cargada correctamente",
+          text: "La propiedad fue agregada correctamente",
           icon: "success",
           timer: "2000",
         })
       );
+
+      setOperacion("");
       setTitulo("");
       setTipo("");
       setDireccion("");
@@ -73,7 +123,7 @@ export const AddNewProperty = () => {
   };
 
   return (
-    <div className="add-section contacto animate__animated animate__fadeIn">
+    <div className="add-section animate__animated animate__fadeIn">
       <h2>Añadir nueva propiedad</h2>
       <form className="form-section" onSubmit={handleSubmit}>
         <div className="add-form-section">
@@ -97,13 +147,16 @@ export const AddNewProperty = () => {
             <option value="local">Local comercial</option>
             <option value="terreno">Chacras / Campos</option>
           </select>
-          {/* <input
-            onChange={(e) => setTipo(e.target.value.toLocaleLowerCase())}
-            value={tipo}
-            className="add-title tipo"
-            type="text"
-            placeholder="Tipo de propiedad"
-          /> */}
+          <select
+            className="add-operacion"
+            onChange={(e) => setOperacion(e.target.value)}
+          >
+            <option value="default" className="disabled" hidden>
+              Tipo de operacion
+            </option>
+            <option value="venta">Venta</option>
+            <option value="alquiler">Alquiler</option>
+          </select>
           <input
             onChange={(e) => setDireccion(e.target.value)}
             value={direccion}
@@ -118,69 +171,91 @@ export const AddNewProperty = () => {
             type="number"
             placeholder="Precio"
           />
-          <input
-            onChange={(e) => setHabs(e.target.value)}
-            value={habs}
-            className="add-carac"
-            type="text"
-            placeholder="Habitaciones"
-          />
-          <input
-            onChange={(e) => setBans(e.target.value)}
-            value={bans}
-            className="add-carac"
-            type="text"
-            placeholder="Banos"
-          />
-          <input
-            onChange={(e) => setM2(e.target.value)}
-            value={m2}
-            className="add-carac"
-            type="text"
-            placeholder="m2"
-          />
-          <input
-            onChange={(e) => setCarac1(e.target.value)}
-            value={carac1}
-            className="add-carac"
-            type="text"
-            placeholder="caracteristicas extra"
-          />
-          <input
-            onChange={(e) => setCarac2(e.target.value)}
-            value={carac2}
-            className="add-carac"
-            type="text"
-            placeholder="caracteristicas extra"
-          />
-          <input
-            onChange={(e) => setCarac3(e.target.value)}
-            value={carac3}
-            className="add-carac"
-            type="text"
-            placeholder="caracteristicas extra"
-          />
-          <input
-            onChange={(e) => setCarac4(e.target.value)}
-            value={carac4}
-            className="add-carac"
-            type="text"
-            placeholder="caracteristicas extra"
-          />
-
+          <div className="caracteristicas-add-inputs">
+            <input
+              onChange={(e) => setHabs(e.target.value)}
+              value={habs}
+              className="add-carac"
+              type="number"
+              placeholder="Habitaciones"
+            />
+            <input
+              onChange={(e) => setBans(e.target.value)}
+              value={bans}
+              className="add-carac"
+              type="number"
+              placeholder="Banos"
+            />
+            <input
+              onChange={(e) => setM2(e.target.value)}
+              value={m2}
+              className="add-carac"
+              type="number"
+              placeholder="m2"
+            />
+            <input
+              onChange={(e) => setCarac1(e.target.value)}
+              value={carac1}
+              className="add-carac"
+              type="text"
+              placeholder="caracteristicas extra"
+            />
+            <input
+              onChange={(e) => setCarac2(e.target.value)}
+              value={carac2}
+              className="add-carac"
+              type="text"
+              placeholder="caracteristicas extra"
+            />
+            <input
+              onChange={(e) => setCarac3(e.target.value)}
+              value={carac3}
+              className="add-carac"
+              type="text"
+              placeholder="caracteristicas extra"
+            />
+            <input
+              onChange={(e) => setCarac4(e.target.value)}
+              value={carac4}
+              className="add-carac"
+              type="text"
+              placeholder="caracteristicas extra"
+            />
+          </div>
           <textarea
             onChange={(e) => setDescripcion(e.target.value)}
             value={descripcion}
             placeholder="Descripcion"
             className="add-textarea"
           />
-          <input type="file" className="btn-add" />
+          <label>Imagen principal</label>
+          <input
+            ref={imagePrincipalRef}
+            type="file"
+            className="btn-add"
+            name="file"
+            onChange={uploadImagenPrincipal}
+          />
+          <label>Imagenes adicionales</label>
+          <input
+            ref={image7Ref}
+            multiple
+            type="file"
+            className="btn-add"
+            name="file"
+            onChange={uploadImagen7}
+          />
         </div>
+
         <button
           className="btn-add-property"
           type="submit"
           disabled={
-            loading || titulo === "" || descripcion === "" || direccion === ""
+            loading ||
+            titulo === "" ||
+            descripcion === "" ||
+            direccion === "" ||
+            imagenPrincipal === ""
           }
         >
           Añadir propiedad

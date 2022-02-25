@@ -18,7 +18,6 @@ export const PropiedadScreen = () => {
     });
   }, []);
 
-  console.log(propiedad);
   return (
     <div id="propiedad">
       <div className="propiedad-screen">
@@ -37,7 +36,12 @@ export const PropiedadScreen = () => {
                 <span>Ver mapa</span>
               </a>
             </div>
-            <h3>{"$ " + propiedad?.precio}</h3>
+            <h3>
+              {Intl.NumberFormat("es-AR", {
+                style: "currency",
+                currency: "ARS",
+              }).format(propiedad?.precio)}
+            </h3>
           </div>
           <div className="caracteristicas">
             <h3>Caracteristicas</h3>
@@ -53,19 +57,53 @@ export const PropiedadScreen = () => {
             </ul>
           </div>
           <div className="propiedad-screen-img-container">
-            <img
-              className="img-propiedad-screen"
-              src="https://st.hzcdn.com/simgs/pictures/living-rooms/living-room-moore-house-design-img~a111971d0d6ade6a_4-9543-1-fd1c78b.jpg"
-            />
-            <img
-              className="img-propiedad-screen"
-              src="https://st.hzcdn.com/simgs/pictures/living-rooms/living-room-moore-house-design-img~a111971d0d6ade6a_4-9543-1-fd1c78b.jpg"
-            />
-            <img
-              className="img-propiedad-screen"
-              src="https://st.hzcdn.com/simgs/pictures/living-rooms/living-room-moore-house-design-img~a111971d0d6ade6a_4-9543-1-fd1c78b.jpg"
-            />
-            <button className="btn-ver-all-img">VER TODAS LAS FOTOS</button>
+            <img className="img-propiedad-screen" src={propiedad?.image} />
+            <img className="img-propiedad-screen" src={propiedad?.imagen0} />
+            <img className="img-propiedad-screen" src={propiedad?.imagen1} />
+            {propiedad.imagen2 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen2} />
+            ) : (
+              <p></p>
+            )}
+            {propiedad.imagen3 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen3} />
+            ) : (
+              <p></p>
+            )}
+
+            {propiedad.imagen4 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen4} />
+            ) : (
+              <p></p>
+            )}
+
+            {propiedad.imagen5 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen5} />
+            ) : (
+              <p></p>
+            )}
+            {propiedad.imagen6 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen6} />
+            ) : (
+              <p></p>
+            )}
+
+            {propiedad.imagen7 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen7} />
+            ) : (
+              <p></p>
+            )}
+
+            {propiedad.imagen8 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen8} />
+            ) : (
+              <p></p>
+            )}
+            {propiedad.imagen9 ? (
+              <img className="img-propiedad-screen" src={propiedad?.imagen9} />
+            ) : (
+              <p></p>
+            )}
 
             <p>{propiedad?.descripcion}</p>
           </div>

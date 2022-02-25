@@ -6,10 +6,92 @@
   width: 100%;
   margin-bottom: 50px;
 }
+.novedades-card-div-animate {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
 
 @media screen and (min-width: 1000px) {
   .list {
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .skeleton {
+    opacity: 0.7;
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+
+  .skeleton-text {
+    width: 100%;
+    height: 0.5rem;
+    margin-bottom: 0.25rem;
+    border-radius: 0.125rem;
+  }
+
+  .skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 70%);
+    }
+
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+
+  .grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 1rem;
+  }
+
+  .card {
+    background-color: rgb(236, 233, 233);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    padding: 16px;
+    border-radius: 10px;
+    height: 500px;
+    width: 400px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+
+  .header {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    height: 150px;
+  }
+
+  .header-img {
+    width: auto;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    word-wrap: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex-grow: 1;
   }
 }

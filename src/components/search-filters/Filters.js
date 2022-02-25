@@ -25,12 +25,14 @@ export const Filters = ({ state, setSearchResults }) => {
           });
     const whereMinPrice = where("precio", ">=", minPrice);
     const whereMaxPrice = where("precio", "<=", maxPrice);
+    const whereHabs = where("habs", "==", habs);
+    const whereBans = where("bans", "==", bans);
+    const whereOperacion = where("operacion", "==", state.propertyType);
 
-    if (habs !== "" && bans !== "") {
-      const whereHabs = where("habs", "==", habs);
-      const whereBans = where("bans", "==", bans);
+    if (propiedad !== "" && habs !== "" && bans !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
+        whereOperacion,
         wherePropiedad,
         whereHabs,
         whereBans,
@@ -39,10 +41,10 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
-    } else if (habs !== "") {
-      const whereHabs = where("habs", "==", habs);
+    } else if (propiedad !== "" && habs !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
+        whereOperacion,
         wherePropiedad,
         whereHabs,
         whereMinPrice,
@@ -50,10 +52,10 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
-    } else if (bans !== "") {
-      const whereBans = where("bans", "==", bans);
+    } else if (propiedad !== "" && bans !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
+        whereOperacion,
         wherePropiedad,
         whereBans,
         whereMinPrice,
@@ -61,9 +63,10 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
-    } else {
+    } else if (propiedad !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
+        whereOperacion,
         wherePropiedad,
         whereMinPrice,
         whereMaxPrice

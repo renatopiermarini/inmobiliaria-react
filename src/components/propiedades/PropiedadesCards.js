@@ -3,8 +3,10 @@ import "./cards.css";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase/firebase-config";
 import swal from "sweetalert";
+import "animate.css";
 
 export const PropiedadesCards = ({
+  image,
   id,
   titulo,
   direccion,
@@ -16,7 +18,6 @@ export const PropiedadesCards = ({
   descripcion,
 }) => {
   const auth = localStorage.getItem("usuario") || "";
-
   const mostrarAlerta = () => {
     swal({
       title: "Vos decis bro?",
@@ -44,10 +45,7 @@ export const PropiedadesCards = ({
       <div className="card-container">
         <Link to={`/propiedad/${id}`} className="card-link">
           <div className="img-property-container">
-            <img
-              className="imagen-propiedad"
-              src="https://st.hzcdn.com/simgs/pictures/living-rooms/living-room-moore-house-design-img~a111971d0d6ade6a_4-9543-1-fd1c78b.jpg"
-            />
+            <img className="imagen-propiedad" src={image} />
           </div>
         </Link>
 
@@ -57,7 +55,12 @@ export const PropiedadesCards = ({
               <h2>{titulo}</h2>
               <span className="margin-top">{direccion}</span>
 
-              <h3>{"$ " + precio}</h3>
+              <h3>
+                {Intl.NumberFormat("es-AR", {
+                  style: "currency",
+                  currency: "ARS",
+                }).format(precio)}
+              </h3>
               <div className="comodidades">
                 <span className="margin-top">
                   {habs.substring(0, 5) + " habitaciones".substring(0, 4)}
