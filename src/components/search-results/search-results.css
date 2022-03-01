@@ -15,6 +15,11 @@
   margin-bottom: 50px;
 }
 
+.no-results {
+  color: grey;
+  margin-top: 30px;
+}
+
 @media screen and (min-width: 1000px) {
   .list-div {
     flex-direction: row;

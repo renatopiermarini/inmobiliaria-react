@@ -5,7 +5,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useState } from "react";
 import swal from "sweetalert";
 
-export const Filters = ({ state, setSearchResults }) => {
+export const Filters = ({ state, setSearchResults, setIsEmpty }) => {
   const [propiedad, setPropiedad] = useState("");
   const [habs, setHabs] = useState("");
   const [bans, setBans] = useState("");
@@ -44,6 +44,7 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
+      setIsEmpty(documentSnapshots1.empty);
     } else if (propiedad !== "" && localidad !== "" && bans !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
@@ -56,6 +57,7 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
+      setIsEmpty(documentSnapshots1.empty);
     } else if (propiedad !== "" && localidad !== "" && habs !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
@@ -68,7 +70,8 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
-    } else if (propiedad !== "" && bans !== "" && bans !== "") {
+      setIsEmpty(documentSnapshots1.empty);
+    } else if (propiedad !== "" && habs !== "" && bans !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
         whereOperacion,
@@ -80,6 +83,7 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
+      setIsEmpty(documentSnapshots1.empty);
     } else if (propiedad !== "" && localidad !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
@@ -91,6 +95,7 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
+      setIsEmpty(documentSnapshots1.empty);
     } else if (propiedad !== "" && habs !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
@@ -102,6 +107,7 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
+      setIsEmpty(documentSnapshots1.empty);
     } else if (propiedad !== "" && bans !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
@@ -113,6 +119,7 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
+      setIsEmpty(documentSnapshots1.empty);
     } else if (propiedad !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
@@ -123,7 +130,9 @@ export const Filters = ({ state, setSearchResults }) => {
       );
       const documentSnapshots1 = await getDocs(queryTipo);
       setSearchResults(documentSnapshots1.docs);
+      setIsEmpty(documentSnapshots1.empty);
     }
+    document.documentElement.scrollTo(650, 650);
   };
 
   return (
@@ -194,6 +203,7 @@ export const Filters = ({ state, setSearchResults }) => {
           />
         </div>
       </div>
+
       <div className="btn-buscar-div">
         <button
           className="btn-buscar"

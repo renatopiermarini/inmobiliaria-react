@@ -7,6 +7,7 @@ import { Nosotros } from "../containers/nosotros/Nosotros";
 import { Novedades } from "../containers/novedades/Novedades";
 import "./home.css";
 import "animate.css";
+import iconUp from "./icono/flecha-hacia-arriba.png";
 
 // import { Propiedades } from "./containers/propiedades/Propiedades";
 
@@ -29,10 +30,7 @@ function App() {
           />
         </a>
         <a href="#navbar" className="scroll-to-top-btn">
-          <img
-            src="https://cdn-icons.flaticon.com/png/128/2697/premium/2697197.png?token=exp=1646160515~hmac=3c8df2b94c7a014a495cb04cad87abe3"
-            className="scroll-to-top-img"
-          />
+          <img src={iconUp} className="scroll-to-top-img" />
         </a>
       </div>
     </div>

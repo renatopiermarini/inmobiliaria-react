@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/navbar/Navbar";
 import { PropiedadScreen } from "../components/propiedades/propiedades-screen/PropiedadScreen";
+import { SearchResults } from "../components/search-results/SearchResults";
 import { Footer } from "../containers/footer/Footer";
 
 import { Login } from "../containers/login/Login";
