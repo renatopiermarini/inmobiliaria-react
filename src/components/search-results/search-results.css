@@ -11,9 +11,14 @@
   color: var(--primaryColor);
 }
 
+.list-div {
+  margin-bottom: 50px;
+}
+
 @media screen and (min-width: 1000px) {
   .list-div {
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 50px;
   }
 }

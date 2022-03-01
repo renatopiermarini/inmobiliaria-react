@@ -75,35 +75,25 @@ h3 {
 
 .propiedad-screen-img-container p {
   margin-right: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin-top: 50px;
   margin-left: 20px;
 }
 
 .img-propiedad-screen {
   height: auto;
-  width: 90%;
+  width: 95%;
   margin-bottom: 20px;
   border-radius: 5px;
 }
 
-.btn-ver-all-img {
-  font-size: 14px;
-  padding: 0.9em 2em;
-  margin-top: 20px;
-  background-color: var(--primaryColor);
-  color: white;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  margin-bottom: 40px;
-  cursor: pointer;
-}
-
 .mapa {
-  height: 400px;
+  height: auto;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .btn-propiedades-contactar {

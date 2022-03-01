@@ -4,17 +4,9 @@ import "animate.css";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../firebase/firebase-config";
 
-// import { AuthContext } from "../../context/authContext";
-// import { AuthProvider } from "../../context/authContext";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../firebase/firebase-config";
-
 export const Login = () => {
   const emailRef = useRef();
-  // const pene = useContext(AuthContext);
-  // console.log(pene);
   const passwordRef = useRef();
-
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useNavigate();

@@ -35,6 +35,7 @@ export const PropiedadesList = () => {
               image={propiedad?.data().image}
               imagen7={propiedad?.data().imagen7}
               id={propiedad?.id}
+              operacion={propiedad?.data().operacion}
               titulo={propiedad?.data().titulo}
               direccion={propiedad?.data().direccion}
               precio={propiedad?.data().precio}

@@ -49,6 +49,7 @@ export const Novedades = () => {
                 <PropiedadesCards
                   key={propiedad.id}
                   image={propiedad?.data().image}
+                  operacion={propiedad?.data().operacion}
                   id={propiedad?.id}
                   titulo={propiedad?.data().titulo}
                   direccion={propiedad?.data().direccion}

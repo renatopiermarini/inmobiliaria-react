@@ -7,6 +7,11 @@
   flex-direction: column;
 }
 
+.imagen-principal {
+  color: var(--primaryColor);
+  margin-bottom: 20px;
+}
+
 .form-section {
   display: flex;
   align-items: center;
@@ -111,7 +116,7 @@
   color: var(--primaryColor);
   border: none;
   outline: none;
-  padding: 10px 20px;
+  padding: 15px 30px;
   border-radius: 10px;
   margin-bottom: 40px;
   font-weight: bold;

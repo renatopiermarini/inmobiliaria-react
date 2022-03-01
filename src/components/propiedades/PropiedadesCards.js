@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import "./cards.css";
-import { deleteDoc, doc } from "firebase/firestore";
-import { db } from "../../firebase/firebase-config";
+import { deletePropiedad } from "../../firebase/firebase-config";
 import swal from "sweetalert";
 import "animate.css";
 
 export const PropiedadesCards = ({
+  operacion,
   image,
   id,
   titulo,
@@ -26,7 +26,7 @@ export const PropiedadesCards = ({
       buttons: ["No, casi la cago", "Obvio pa"],
     }).then((respuesta) => {
       if (respuesta) {
-        handleDelete();
+        deletePropiedad(id);
         swal({
           text: "La propiedad fue eliminada",
           icon: "success",
@@ -36,9 +36,10 @@ export const PropiedadesCards = ({
     });
   };
 
-  const handleDelete = () => {
-    deleteDoc(doc(db, `propiedades/${id}`));
-  };
+  const currency = Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+  }).format(precio);
 
   return (
     <div className="card-container-div animate__animated animate__fadeIn">
@@ -56,10 +57,8 @@ export const PropiedadesCards = ({
               <span className="margin-top">{direccion}</span>
 
               <h3>
-                {Intl.NumberFormat("es-AR", {
-                  style: "currency",
-                  currency: "ARS",
-                }).format(precio)}
+                {operacion !== "alquiler" && "US"}
+                {currency}
               </h3>
               <div className="comodidades">
                 <span className="margin-top">

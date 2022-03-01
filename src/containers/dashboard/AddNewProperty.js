@@ -6,7 +6,9 @@ import "animate.css";
 
 export const AddNewProperty = () => {
   const [imagenPrincipal, setImagenPrincipal] = useState("");
-
+  const [coordenadas, setCoordenadas] = useState({
+    currentLocation: { lat: "", lng: "" },
+  });
   const [imagen7, setImagen7] = useState([]);
   const [operacion, setOperacion] = useState("");
   const [titulo, setTitulo] = useState("");
@@ -25,12 +27,18 @@ export const AddNewProperty = () => {
   const [loading, setLoading] = useState(false);
 
   const imagePrincipalRef = useRef(null);
-  const image2Ref = useRef(null);
-  const image3Ref = useRef(null);
-  const image4Ref = useRef(null);
-  const image5Ref = useRef(null);
-  const image6Ref = useRef(null);
   const image7Ref = useRef(null);
+
+  // const handleCoordenadas = (e) => {
+  //   setCoordenadas({
+  //     currentLocation: {
+  //       lat: e.target.valueLat,
+  //       lng: e.target.valueLng,
+  //     },
+  //     zoom: 15,
+  //   });
+  //   console.log(coordenadas);
+  // };
 
   const uploadImagenPrincipal = async (e) => {
     const file_extension = imagePrincipalRef?.current?.value
@@ -60,20 +68,35 @@ export const AddNewProperty = () => {
   };
 
   const uploadImagen7 = async (e) => {
-    console.log(e.target.files);
+    const file_extension = image7Ref?.current?.value
+      ?.split("\\")[2]
+      .split(".")[1];
+    if (
+      file_extension === "png" ||
+      file_extension === "jpg" ||
+      file_extension === "jpge" ||
+      file_extension === "gif" ||
+      file_extension === "webp"
+    ) {
+      let photoArchivo = [];
 
-    let photoArchivo = [];
-
-    for (let i = 0; i < e.target.files.length; i++) {
-      const photo = e.target.files[i];
-      const reader = new FileReader();
-      if (photo) {
-        reader.readAsDataURL(photo);
+      for (let i = 0; i < e.target.files.length; i++) {
+        const photo = e.target.files[i];
+        const reader = new FileReader();
+        if (photo) {
+          reader.readAsDataURL(photo);
+        }
+        reader.onload = (readerEvent) => {
+          photoArchivo[i] = [readerEvent.target.result];
+          setImagen7(photoArchivo);
+        };
       }
-      reader.onload = (readerEvent) => {
-        photoArchivo[i] = [readerEvent.target.result];
-        setImagen7(photoArchivo);
-      };
+    } else {
+      swal({
+        text: "Formato de imagen no valido",
+        icon: "danger",
+        timer: "2000",
+      });
     }
   };
 
@@ -82,6 +105,7 @@ export const AddNewProperty = () => {
     setLoading(true);
     if (titulo !== "" && descripcion !== "" && direccion !== "") {
       await uploadProperty({
+        coordenadas,
         imagenPrincipal,
         imagen7,
         operacion,
@@ -104,7 +128,8 @@ export const AddNewProperty = () => {
           timer: "2000",
         })
       );
-
+      setImagen7([]);
+      setImagenPrincipal("");
       setOperacion("");
       setTitulo("");
       setTipo("");
@@ -121,6 +146,8 @@ export const AddNewProperty = () => {
       setLoading(false);
     }
   };
+
+  console.log(coordenadas);
 
   return (
     <div className="add-section animate__animated animate__fadeIn">
@@ -164,6 +191,36 @@ export const AddNewProperty = () => {
             type="text"
             placeholder="Direccion"
           />
+          <div className="caracteristicas-add-inputs">
+            <input
+              onChange={(e) =>
+                setCoordenadas({
+                  currentLocation: {
+                    lat: parseFloat(e.target.value),
+                    lng: coordenadas.currentLocation.lng,
+                  },
+                })
+              }
+              type="number"
+              placeholder="Latitud"
+              className="add-carac"
+              value={coordenadas.currentLocation.lat}
+            />
+            <input
+              onChange={(e) =>
+                setCoordenadas({
+                  currentLocation: {
+                    lat: coordenadas.currentLocation.lat,
+                    lng: parseFloat(e.target.value),
+                  },
+                })
+              }
+              type="number"
+              placeholder="Longitud"
+              className="add-carac"
+              value={coordenadas.currentLocation.lng}
+            />
+          </div>
           <input
             onChange={(e) => setPrecio(parseInt(e.target.value))}
             value={precio}
@@ -228,7 +285,7 @@ export const AddNewProperty = () => {
             placeholder="Descripcion"
             className="add-textarea"
           />
-          <label>Imagen principal</label>
+          <label className="imagen-principal">Imagen principal</label>
           <input
             ref={imagePrincipalRef}
             type="file"
@@ -236,7 +293,7 @@ export const AddNewProperty = () => {
             name="file"
             onChange={uploadImagenPrincipal}
           />
-          <label>Imagenes adicionales</label>
+          <label className="imagen-principal">Imagenes adicionales</label>
           <input
             ref={image7Ref}
             multiple

@@ -2,7 +2,9 @@ import { initializeApp, getApps, getApp } from "firebase/app";
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
+  getDoc,
   getFirestore,
   serverTimestamp,
   updateDoc,
@@ -29,6 +31,7 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore();
 const storage = getStorage();
 const auth = getAuth();
+
 const login = async (email, password) => {
   return signInWithEmailAndPassword(auth, email, password).then((user) => {
     const userCred = user.user;
@@ -37,6 +40,7 @@ const login = async (email, password) => {
 };
 
 const uploadProperty = async ({
+  coordenadas,
   imagenPrincipal,
   imagen7,
   operacion,
@@ -54,6 +58,7 @@ const uploadProperty = async ({
   carac4,
 }) => {
   const docRef = await addDoc(collection(db, "propiedades"), {
+    coordenadas,
     operacion,
     tipo,
     titulo,
@@ -69,7 +74,9 @@ const uploadProperty = async ({
     carac4: carac4 !== undefined ? carac4 : "",
     timestamp: serverTimestamp(),
   });
+
   const imageRefPropiedad = ref(storage, `propiedades/${docRef.id}/image`);
+
   uploadString(imageRefPropiedad, imagenPrincipal, "data_url").then(
     async (snapshot) => {
       const downloadURL = await getDownloadURL(imageRefPropiedad);
@@ -78,6 +85,7 @@ const uploadProperty = async ({
       });
     }
   );
+
   for (let i = 0; i < imagen7.length; i++) {
     const photoActual = `imagen${i}`;
     const imageRefPropiedad7 = ref(
@@ -95,4 +103,25 @@ const uploadProperty = async ({
   }
 };
 
-export { app, db, auth, login, uploadProperty, storage };
+const getPropiedadById = (propiedadId) => {
+  const propiedadRef = doc(db, "propiedades", propiedadId);
+
+  const propiedad = getDoc(propiedadRef);
+
+  return propiedad;
+};
+
+const deletePropiedad = (id) => {
+  deleteDoc(doc(db, `propiedades/${id}`));
+};
+
+export {
+  app,
+  db,
+  auth,
+  login,
+  uploadProperty,
+  storage,
+  getPropiedadById,
+  deletePropiedad,
+};
