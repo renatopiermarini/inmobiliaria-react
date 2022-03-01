@@ -7,3 +7,26 @@
   right: 15px;
   bottom: 15px;
 }
+
+.scroll-to-top-btn {
+  display: none;
+}
+
+.scroll-to-top-img {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .scroll-to-top-btn {
+    position: fixed;
+    display: block;
+    text-decoration: none;
+    left: 30px;
+    bottom: 20px;
+  }
+
+  .scroll-to-top-img {
+    height: 40px;
+    display: block;
+  }
+}

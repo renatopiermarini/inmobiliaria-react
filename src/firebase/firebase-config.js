@@ -40,6 +40,7 @@ const login = async (email, password) => {
 };
 
 const uploadProperty = async ({
+  localidad,
   coordenadas,
   imagenPrincipal,
   imagen7,
@@ -58,6 +59,7 @@ const uploadProperty = async ({
   carac4,
 }) => {
   const docRef = await addDoc(collection(db, "propiedades"), {
+    localidad,
     coordenadas,
     operacion,
     tipo,

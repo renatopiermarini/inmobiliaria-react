@@ -11,6 +11,7 @@ export const Filters = ({ state, setSearchResults }) => {
   const [bans, setBans] = useState("");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(10000000000000000000000);
+  const [localidad, setLocalidad] = useState("");
 
   const searchForProperties = async (e) => {
     e.preventDefault();
@@ -28,14 +29,63 @@ export const Filters = ({ state, setSearchResults }) => {
     const whereHabs = where("habs", "==", habs);
     const whereBans = where("bans", "==", bans);
     const whereOperacion = where("operacion", "==", state.propertyType);
+    const whereLocalidad = where("localidad", "==", localidad);
 
-    if (propiedad !== "" && habs !== "" && bans !== "") {
+    if (propiedad !== "" && habs !== "" && bans !== "" && localidad !== "") {
       const queryTipo = query(
         collection(db, "propiedades"),
         whereOperacion,
         wherePropiedad,
         whereHabs,
         whereBans,
+        whereMinPrice,
+        whereMaxPrice,
+        whereLocalidad
+      );
+      const documentSnapshots1 = await getDocs(queryTipo);
+      setSearchResults(documentSnapshots1.docs);
+    } else if (propiedad !== "" && localidad !== "" && bans !== "") {
+      const queryTipo = query(
+        collection(db, "propiedades"),
+        whereOperacion,
+        wherePropiedad,
+        whereLocalidad,
+        whereMinPrice,
+        whereMaxPrice,
+        whereBans
+      );
+      const documentSnapshots1 = await getDocs(queryTipo);
+      setSearchResults(documentSnapshots1.docs);
+    } else if (propiedad !== "" && localidad !== "" && habs !== "") {
+      const queryTipo = query(
+        collection(db, "propiedades"),
+        whereOperacion,
+        wherePropiedad,
+        whereLocalidad,
+        whereMinPrice,
+        whereMaxPrice,
+        whereHabs
+      );
+      const documentSnapshots1 = await getDocs(queryTipo);
+      setSearchResults(documentSnapshots1.docs);
+    } else if (propiedad !== "" && bans !== "" && bans !== "") {
+      const queryTipo = query(
+        collection(db, "propiedades"),
+        whereOperacion,
+        wherePropiedad,
+        whereHabs,
+        whereMinPrice,
+        whereMaxPrice,
+        whereBans
+      );
+      const documentSnapshots1 = await getDocs(queryTipo);
+      setSearchResults(documentSnapshots1.docs);
+    } else if (propiedad !== "" && localidad !== "") {
+      const queryTipo = query(
+        collection(db, "propiedades"),
+        whereOperacion,
+        wherePropiedad,
+        whereLocalidad,
         whereMinPrice,
         whereMaxPrice
       );
@@ -90,6 +140,17 @@ export const Filters = ({ state, setSearchResults }) => {
         {state.propertyType === "venta" && <option value="lote">Lote</option>}
         <option value="local">Local comercial</option>
         <option value="terreno">Chacras / Campos</option>
+      </select>
+      <select
+        className="select-property-type"
+        onChange={(e) => setLocalidad(e.target.value)}
+      >
+        <option value="default" className="disabled" hidden>
+          Localidad
+        </option>
+        <option value="viedma">Viedma</option>
+        <option value="patagones">Carmen De Patagones</option>
+        <option value="laboca">Balneario El Condor</option>
       </select>
       <select
         className="select-property-type"

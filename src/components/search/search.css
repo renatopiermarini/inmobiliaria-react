@@ -4,7 +4,7 @@
   background-image: url(https://media.istockphoto.com/photos/pink-sunset-picture-id1139149089?k=20&m=1139149089&s=170667a&w=0&h=cC0yIVOH4i0Q4m1UNmtfGPzHIIRNAzK6f5qo43Z31UI=);
   background-size: cover;
   background-blend-mode: darken;
-  height: 600px;
+  height: 650px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,8 +13,8 @@
 }
 
 .filters-container {
-  background-color: rgb(255, 255, 255);
-  height: 350px;
+  background-color: rgb(249, 249, 249);
+  height: auto;
   width: 90vw;
   flex-direction: column;
   display: flex;
@@ -43,7 +43,7 @@
 
 .selected-venta {
   width: 45vw;
-  background-color: white;
+  background-color: rgb(249, 249, 249);
   border: none;
   padding: 15px 25px;
   color: var(--primaryColor);
@@ -54,7 +54,7 @@
 
 .selected-alquiler {
   width: 45vw;
-  background-color: white;
+  background-color: rgb(249, 249, 249);
   border: none;
   padding: 15px 25px;
   color: var(--primaryColor);
@@ -84,6 +84,8 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 10px;
   background-color: #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* En .buscador deberia haber un display:grid para organizar los selects */
@@ -103,6 +105,7 @@
   justify-content: center;
   width: 100%;
   height: auto;
+  margin-bottom: 20px;
 }
 
 .btn-buscar {
@@ -161,12 +164,16 @@
     background-image: url(https://media.istockphoto.com/photos/pink-sunset-picture-id1139149089?k=20&m=1139149089&s=170667a&w=0&h=cC0yIVOH4i0Q4m1UNmtfGPzHIIRNAzK6f5qo43Z31UI=);
     background-size: cover;
     background-blend-mode: darken;
-    height: 600px;
+    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-position-y: 20%;
+  }
+
+  .price-range {
+    margin-top: 20px;
   }
 
   .price-range-input-section input {
@@ -198,9 +205,9 @@
   }
 
   .filters-container {
-    background-color: rgb(255, 255, 255);
-    height: 400px;
-    width: 30vw;
+    background-color: rgb(249, 249, 249);
+    height: 500px;
+    width: 25vw;
     flex-direction: column;
     display: flex;
     border-radius: 0 10px 10px 10px;
@@ -221,7 +228,7 @@
 
   .selected-venta {
     width: 145px;
-    background-color: white;
+    background-color: rgb(249, 249, 249);
     color: var(--primaryColor);
     border: none;
     padding: 15px 25px;
@@ -236,7 +243,7 @@
 
   .selected-alquiler {
     width: 145px;
-    background-color: white;
+    background-color: rgb(249, 249, 249);
     color: var(--primaryColor);
     border: none;
     padding: 15px 25px;
@@ -272,14 +279,15 @@
     outline: none;
 
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 
   /* En .buscador deberia haber un display:grid para organizar los selects */
 
   .buscador {
     margin-top: 20px;
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -292,6 +300,7 @@
     justify-content: center;
     width: 100%;
     height: auto;
+    margin-top: 20px;
   }
 
   .btn-buscar {

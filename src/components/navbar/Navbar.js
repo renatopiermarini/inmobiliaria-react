@@ -8,9 +8,11 @@ export const Navbar = () => {
   const handleClick = () => {
     setClicked(!clicked);
   };
+
+  const auth = localStorage.getItem("usuario") || "";
   return (
     <>
-      <nav>
+      <nav id="navbar">
         <Link to="/">
           <img src="../../assets/logo.jpeg" />
         </Link>
@@ -20,6 +22,7 @@ export const Navbar = () => {
           <NavLink to="/propiedades">Propiedades</NavLink>
           <a href="/#nosotros">Nosotros</a>
           <a href="/#contacto">Contacto</a>
+          {auth && <NavLink to="/dashboard">Dashboard</NavLink>}
         </div>
         <div className="burger">
           <BurgerButton clicked={clicked} handleClick={handleClick} />

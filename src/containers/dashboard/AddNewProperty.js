@@ -17,28 +17,18 @@ export const AddNewProperty = () => {
   const [precio, setPrecio] = useState("");
   const [habs, setHabs] = useState("");
   const [bans, setBans] = useState("");
+  const [localidad, setLocalidad] = useState("");
   const [m2, setM2] = useState("");
   const [carac1, setCarac1] = useState("");
   const [carac2, setCarac2] = useState("");
   const [carac3, setCarac3] = useState("");
   const [carac4, setCarac4] = useState("");
   const [descripcion, setDescripcion] = useState("");
-
   const [loading, setLoading] = useState(false);
 
   const imagePrincipalRef = useRef(null);
-  const image7Ref = useRef(null);
 
-  // const handleCoordenadas = (e) => {
-  //   setCoordenadas({
-  //     currentLocation: {
-  //       lat: e.target.valueLat,
-  //       lng: e.target.valueLng,
-  //     },
-  //     zoom: 15,
-  //   });
-  //   console.log(coordenadas);
-  // };
+  const image7Ref = useRef(null);
 
   const uploadImagenPrincipal = async (e) => {
     const file_extension = imagePrincipalRef?.current?.value
@@ -105,6 +95,7 @@ export const AddNewProperty = () => {
     setLoading(true);
     if (titulo !== "" && descripcion !== "" && direccion !== "") {
       await uploadProperty({
+        localidad,
         coordenadas,
         imagenPrincipal,
         imagen7,
@@ -144,10 +135,9 @@ export const AddNewProperty = () => {
       setCarac4("");
       setDescripcion("");
       setLoading(false);
+      setLocalidad("");
     }
   };
-
-  console.log(coordenadas);
 
   return (
     <div className="add-section animate__animated animate__fadeIn">
@@ -159,7 +149,7 @@ export const AddNewProperty = () => {
             value={titulo}
             className="add-title"
             type="text"
-            placeholder="Titulo. Tiene que contener 'venta' o 'alquiler'"
+            placeholder="Titulo."
           />
           <select
             className="add-title select-title"
@@ -183,6 +173,17 @@ export const AddNewProperty = () => {
             </option>
             <option value="venta">Venta</option>
             <option value="alquiler">Alquiler</option>
+          </select>
+          <select
+            className="add-operacion"
+            onChange={(e) => setLocalidad(e.target.value)}
+          >
+            <option value="default" className="disabled" hidden>
+              Localidad
+            </option>
+            <option value="viedma">Viedma</option>
+            <option value="patagones">Carmen De Patagones</option>
+            <option value="laboca">Balneario El Condor</option>
           </select>
           <input
             onChange={(e) => setDireccion(e.target.value)}
