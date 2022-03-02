@@ -54,4 +54,18 @@
   .contact-form-section {
     width: 600px;
   }
+
+  .btn-contact:disabled {
+    cursor: not-allowed;
+  }
+
+  .btn-contact:hover {
+    background-color: #ce80af;
+    color: white;
+  }
+
+  .btn-contact:active {
+    background-color: white;
+    color: var(--primaryColor);
+  }
 }
