@@ -31,61 +31,28 @@ export const AddNewProperty = () => {
   const image7Ref = useRef(null);
 
   const uploadImagenPrincipal = async (e) => {
-    const file_extension = imagePrincipalRef?.current?.value?.split("\\")[2];
-
-    if (
-      file_extension === "png" ||
-      file_extension === "jpg" ||
-      file_extension === "jpeg" ||
-      file_extension === "gif" ||
-      file_extension === "webp"
-    ) {
-      const reader = new FileReader();
-      if (e.target.files[0]) {
-        reader.readAsDataURL(e.target.files[0]);
-      }
-      reader.onload = (readerEvent) => {
-        setImagenPrincipal(readerEvent.target.result);
-      };
-    } else {
-      swal({
-        text: "Formato de imagen no valido",
-        icon: "danger",
-        timer: "2000",
-      });
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
     }
+    reader.onload = (readerEvent) => {
+      setImagenPrincipal(readerEvent.target.result);
+    };
   };
 
   const uploadImagen7 = async (e) => {
-    const file_extension = image7Ref?.current?.value
-      ?.split("\\")[2]
-      .split(".")[1];
-    if (
-      file_extension === "png" ||
-      file_extension === "jpg" ||
-      file_extension === "jpeg" ||
-      file_extension === "gif" ||
-      file_extension === "webp"
-    ) {
-      let photoArchivo = [];
+    let photoArchivo = [];
 
-      for (let i = 0; i < e.target.files.length; i++) {
-        const photo = e.target.files[i];
-        const reader = new FileReader();
-        if (photo) {
-          reader.readAsDataURL(photo);
-        }
-        reader.onload = (readerEvent) => {
-          photoArchivo[i] = [readerEvent.target.result];
-          setImagen7(photoArchivo);
-        };
+    for (let i = 0; i < e.target.files.length; i++) {
+      const photo = e.target.files[i];
+      const reader = new FileReader();
+      if (photo) {
+        reader.readAsDataURL(photo);
       }
-    } else {
-      swal({
-        text: "Formato de imagen no valido",
-        icon: "danger",
-        timer: "2000",
-      });
+      reader.onload = (readerEvent) => {
+        photoArchivo[i] = [readerEvent.target.result];
+        setImagen7(photoArchivo);
+      };
     }
   };
 
