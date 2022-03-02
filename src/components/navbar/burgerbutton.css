@@ -5,6 +5,7 @@
   position: relative;
   cursor: pointer;
   display: inline-block;
+  top: 5px;
 }
 .nav-icon-5 span {
   background-color: #a94c85;
@@ -25,7 +26,7 @@
   opacity: 1;
 }
 .nav-icon-5 span:nth-child(3) {
-  bottom: 0px;
+  bottom: 10px;
   left: 0px;
 }
 .nav-icon-5:not(.open):hover span:nth-child(1) {
