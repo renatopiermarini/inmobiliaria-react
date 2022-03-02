@@ -31,9 +31,8 @@ export const AddNewProperty = () => {
   const image7Ref = useRef(null);
 
   const uploadImagenPrincipal = async (e) => {
-    const file_extension = imagePrincipalRef?.current?.value
-      ?.split("\\")[2]
-      .split(".")[1];
+    const file_extension = imagePrincipalRef?.current?.value?.split("\\")[2];
+
     if (
       file_extension === "png" ||
       file_extension === "jpg" ||
