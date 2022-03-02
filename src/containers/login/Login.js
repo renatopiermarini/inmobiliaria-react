@@ -9,6 +9,7 @@ export const Login = () => {
   const passwordRef = useRef();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const history = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -18,6 +19,7 @@ export const Login = () => {
       setLoading(true);
       login(emailRef.current.value, passwordRef.current.value).then((user) => {
         localStorage.setItem("usuario", user.uid);
+        history("/dashboard");
       });
     } catch (err) {
       setError(err);

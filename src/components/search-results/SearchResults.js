@@ -12,7 +12,7 @@ export const SearchResults = ({ searchResults }) => {
               <h2 key="h2">Resultados de la búsqueda</h2>
               <PropiedadesCards
                 key={propiedad.id}
-                image={propiedad?.data().image}
+                imagen={propiedad?.data().imagen}
                 id={propiedad?.id}
                 titulo={propiedad?.data().titulo}
                 direccion={propiedad?.data().direccion}

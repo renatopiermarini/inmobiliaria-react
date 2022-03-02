@@ -93,7 +93,15 @@ export const AddNewProperty = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    if (titulo !== "" && descripcion !== "" && direccion !== "") {
+    if (
+      titulo !== "" &&
+      descripcion !== "" &&
+      direccion !== "" &&
+      imagenPrincipal !== "" &&
+      coordenadas !== "" &&
+      imagen7 !== [] &&
+      tipo !== ""
+    ) {
       await uploadProperty({
         localidad,
         coordenadas,
@@ -136,6 +144,9 @@ export const AddNewProperty = () => {
       setDescripcion("");
       setLoading(false);
       setLocalidad("");
+      setCoordenadas({
+        currentLocation: { lat: "", lng: "" },
+      });
     }
   };
 
@@ -149,7 +160,7 @@ export const AddNewProperty = () => {
             value={titulo}
             className="add-title"
             type="text"
-            placeholder="Titulo."
+            placeholder="Titulo"
           />
           <select
             className="add-title select-title"
@@ -286,7 +297,7 @@ export const AddNewProperty = () => {
             placeholder="Descripcion"
             className="add-textarea"
           />
-          <label className="imagen-principal">Imagen principal</label>
+          <label className="imagen-principal">Imagen miniatura</label>
           <input
             ref={imagePrincipalRef}
             type="file"
@@ -294,7 +305,7 @@ export const AddNewProperty = () => {
             name="file"
             onChange={uploadImagenPrincipal}
           />
-          <label className="imagen-principal">Imagenes adicionales</label>
+          <label className="imagen-principal">Todas las imagenes</label>
           <input
             ref={image7Ref}
             multiple
@@ -313,7 +324,10 @@ export const AddNewProperty = () => {
             titulo === "" ||
             descripcion === "" ||
             direccion === "" ||
-            imagenPrincipal === ""
+            imagenPrincipal === "" ||
+            coordenadas === "" ||
+            imagen7 === [] ||
+            tipo === ""
           }
         >
           Añadir propiedad

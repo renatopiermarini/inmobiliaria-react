@@ -1,0 +1,27 @@
+.carousel {
+  width: 95%;
+  border-radius: 10px;
+}
+
+.imgslider {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(235, 235, 235);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sliderimg {
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .imgslider {
+    height: 300px;
+  }
+  .carousel {
+    width: 100%;
+    border-radius: 0;
+  }
+}

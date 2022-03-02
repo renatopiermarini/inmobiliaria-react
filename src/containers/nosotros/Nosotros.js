@@ -10,15 +10,11 @@ export const Nosotros = () => {
         <div className="nosotros-text-container">
           <h2 className="quienes-somos">Quienes somos</h2>
           <p className="nosotros-parrafo">
-            Laborum ipsum cupidatat Lorem officia amet enim sunt cupidatat culpa
-            id pariatur. Et eiusmod nisi deserunt officia consequat ex cupidatat
-            officia aliqua cupidatat occaecat ut ad excepteur. Veniam proident
-            laborum sit id duis proident. Commodo amet incididunt cillum
-            pariatur laboris exercitation dolor. Ut eiusmod dolore cupidatat
-            consectetur reprehenderit reprehenderit proident. Minim proident
-            eiusmod exercitation ullamco cupidatat eu veniam velit qui.
-            Exercitation nisi magna exercitation deserunt cillum commodo eu
-            consequat Lorem.
+            Soy Marina, Licenciada en Ciencia Política, Martillera y Corredora
+            Pública. En esta ultima profesión que elegí, encontré mi pasión y es
+            por eso que me brindo a mis clientes con tiempo y dedicación, con
+            amabilidad y buena energía para satisfacer sus necesidades y
+            superarlas.
           </p>
         </div>
         <div>

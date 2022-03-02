@@ -3,11 +3,10 @@ import "./cards.css";
 import { deletePropiedad } from "../../firebase/firebase-config";
 import swal from "sweetalert";
 import "animate.css";
-import { useState } from "react";
 
 export const PropiedadesCards = ({
   operacion,
-  image,
+  imagen,
   id,
   titulo,
   direccion,
@@ -47,7 +46,7 @@ export const PropiedadesCards = ({
       <div className="card-container">
         <Link to={`/propiedad/${id}`} className="card-link">
           <div className="img-property-container">
-            <img className="imagen-propiedad" src={image} />
+            <img className="imagen-propiedad" src={imagen} />
           </div>
         </Link>
 
@@ -55,7 +54,7 @@ export const PropiedadesCards = ({
           <Link to={`/propiedad/${id}`} className="card-link">
             <div className="property-description">
               <h2>{titulo.substring(0, 25)}</h2>
-              <span className="margin-top">{direccion}</span>
+              <span className="margin-top direccion">{direccion}</span>
 
               <h3>
                 {operacion !== "alquiler" && "US"}
@@ -71,7 +70,9 @@ export const PropiedadesCards = ({
                 <span className="margin-top">{m2 + " m²".substring(0, 4)}</span>
                 <span className="margin-top">{carac1}</span>
               </div>
-              <p className="margin-top">{descripcion.substring(0, 40)}</p>
+              <p className="margin-top description">
+                {descripcion.substring(0, 40)}
+              </p>
             </div>
           </Link>
         </div>

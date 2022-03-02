@@ -19,7 +19,9 @@ export const Navbar = () => {
         <div className={`links ${clicked ? "active" : ""}`}>
           <a href="/">Inicio</a>
           <a href="/#novedades">Novedades</a>
-          <NavLink to="/propiedades">Propiedades</NavLink>
+          <NavLink to="/propiedades" className="navlink-propiedades">
+            Propiedades
+          </NavLink>
           <a href="/#nosotros">Nosotros</a>
           <a href="/#contacto">Contacto</a>
           {auth && <NavLink to="/dashboard">Dashboard</NavLink>}

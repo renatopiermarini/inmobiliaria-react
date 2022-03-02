@@ -5,17 +5,21 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  getDocs,
   getFirestore,
   serverTimestamp,
+  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {
+  deleteObject,
   getDownloadURL,
   getStorage,
   ref,
   uploadString,
 } from "firebase/storage";
+import { v1 } from "uuid";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBQGYmWfq4jCjQKlAcXqyJPK1aZ2fpCXpw",
@@ -77,13 +81,13 @@ const uploadProperty = async ({
     timestamp: serverTimestamp(),
   });
 
-  const imageRefPropiedad = ref(storage, `propiedades/${docRef.id}/image`);
+  const imageRefPropiedad = ref(storage, `propiedades/${docRef.id}/imagen`);
 
   uploadString(imageRefPropiedad, imagenPrincipal, "data_url").then(
-    async (snapshot) => {
+    async () => {
       const downloadURL = await getDownloadURL(imageRefPropiedad);
       await updateDoc(doc(db, "propiedades", docRef.id), {
-        image: downloadURL,
+        imagen: downloadURL,
       });
     }
   );
@@ -97,8 +101,8 @@ const uploadProperty = async ({
     uploadString(imageRefPropiedad7, imagen7[i][0], "data_url").then(
       async () => {
         const downloadURL = await getDownloadURL(imageRefPropiedad7);
-        await updateDoc(doc(db, "propiedades", docRef.id), {
-          [photoActual]: downloadURL,
+        await setDoc(doc(db, "propiedades", docRef.id, "imagenes", v1()), {
+          imagenCarousel: downloadURL,
         });
       }
     );
@@ -113,7 +117,23 @@ const getPropiedadById = (propiedadId) => {
   return propiedad;
 };
 
+const getImagenesCarousel = async (id) => {
+  const imagenesRef = collection(db, `propiedades/${id}/imagenes`);
+  const documentSnapshot = await getDocs(imagenesRef);
+
+  return documentSnapshot.docs;
+};
+
 const deletePropiedad = (id) => {
+  getImagenesCarousel(id).then((data) => {
+    data.map((dt, i) => {
+      deleteDoc(doc(db, `propiedades/${id}/imagenes/${dt.id}`));
+      const desertRef = ref(storage, `propiedades/${id}/imagen${i}`);
+      deleteObject(desertRef);
+    });
+  });
+  const desertRef = ref(storage, `propiedades/${id}/imagen`);
+  deleteObject(desertRef);
   deleteDoc(doc(db, `propiedades/${id}`));
 };
 
@@ -126,4 +146,5 @@ export {
   storage,
   getPropiedadById,
   deletePropiedad,
+  getImagenesCarousel,
 };

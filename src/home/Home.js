@@ -1,5 +1,3 @@
-// import { PropiedadScreen } from "./components/propiedades/propiedades-screen/PropiedadScreen";
-
 import { Search } from "../components/search/Search";
 import { Contacto } from "../containers/contacto/Contacto";
 
@@ -8,8 +6,6 @@ import { Novedades } from "../containers/novedades/Novedades";
 import "./home.css";
 import "animate.css";
 import iconUp from "./icono/flecha-hacia-arriba.png";
-
-// import { Propiedades } from "./containers/propiedades/Propiedades";
 
 function App() {
   return (

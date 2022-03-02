@@ -48,7 +48,7 @@ export const Novedades = () => {
               propiedades.length !== 0 && (
                 <PropiedadesCards
                   key={propiedad.id}
-                  image={propiedad?.data().image}
+                  imagen={propiedad?.data().imagen}
                   operacion={propiedad?.data().operacion}
                   id={propiedad?.id}
                   titulo={propiedad?.data().titulo}

@@ -117,6 +117,13 @@ h3 {
     overflow: hidden;
   }
 
+  .direccion {
+    margin-bottom: 5px;
+  }
+
+  .description {
+    margin-top: 20px;
+  }
   .card-container {
     transition: transform 300ms ease;
   }

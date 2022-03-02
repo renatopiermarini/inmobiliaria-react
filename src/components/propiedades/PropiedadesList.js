@@ -32,7 +32,7 @@ export const PropiedadesList = () => {
           propiedades.map((propiedad) => (
             <PropiedadesCards
               key={propiedad.id}
-              image={propiedad?.data().image}
+              imagen={propiedad?.data().imagen}
               imagen7={propiedad?.data().imagen7}
               id={propiedad?.id}
               operacion={propiedad?.data().operacion}

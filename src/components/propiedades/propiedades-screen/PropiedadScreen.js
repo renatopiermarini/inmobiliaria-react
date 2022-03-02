@@ -6,6 +6,7 @@ import "animate.css";
 
 import "./propiedad-screen.css";
 import { LoadingScreen } from "./LoadingSreen";
+import { ImgSlider } from "../../imgslider/ImgSlider";
 
 export const PropiedadScreen = () => {
   const { propiedadId } = useParams();
@@ -65,74 +66,7 @@ export const PropiedadScreen = () => {
             </div>
 
             <div className="propiedad-screen-img-container animate__animated animate__fadeIn">
-              <img
-                className="img-propiedad-screen animate__animated animate__fadeIn"
-                src={propiedad?.image}
-              />
-              {propiedad.imagen0 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen0}
-                />
-              )}
-              {propiedad.imagen1 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen1}
-                />
-              )}
-              {propiedad.imagen2 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen2}
-                />
-              )}
-              {propiedad.imagen3 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen3}
-                />
-              )}
-
-              {propiedad.imagen4 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen4}
-                />
-              )}
-
-              {propiedad.imagen5 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen5}
-                />
-              )}
-              {propiedad.imagen6 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen6}
-                />
-              )}
-
-              {propiedad.imagen7 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen7}
-                />
-              )}
-
-              {propiedad.imagen8 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen8}
-                />
-              )}
-              {propiedad.imagen9 && (
-                <img
-                  className="img-propiedad-screen animate__animated animate__fadeIn"
-                  src={propiedad?.imagen9}
-                />
-              )}
+              <ImgSlider propiedadId={propiedadId} />
 
               <p>{propiedad?.descripcion}</p>
             </div>
