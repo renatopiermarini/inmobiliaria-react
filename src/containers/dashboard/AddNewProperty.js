@@ -37,7 +37,7 @@ export const AddNewProperty = () => {
     if (
       file_extension === "png" ||
       file_extension === "jpg" ||
-      file_extension === "jpge" ||
+      file_extension === "jpeg" ||
       file_extension === "gif" ||
       file_extension === "webp"
     ) {
