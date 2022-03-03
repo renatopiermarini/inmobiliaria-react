@@ -4,7 +4,7 @@
 }
 
 .imgslider {
-  height: 800px;
+  height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 600px) {
   .imgslider {
-    height: 600px;
+    height: 300px;
   }
   .carousel {
     width: 100%;
