@@ -10,6 +10,12 @@ export const Footer = () => {
       <a href="https://www.instagram.com/marinatortaroloei/?hl=es">
         <img src="../../assets/instagram.png" />
       </a>
+      <a
+        href="https://renato-piermarini-portfolio.vercel.app/"
+        className="renato"
+      >
+        Developed by Renato Piermarini
+      </a>
     </div>
   );
 };
