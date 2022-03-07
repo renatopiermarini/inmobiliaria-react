@@ -67,7 +67,9 @@ export const PropiedadesCards = ({
                 <span className="margin-top">
                   {bans.substring(0, 5) + " baños".substring(0, 4)}
                 </span>
-                <span className="margin-top">{m2 + " m²".substring(0, 4)}</span>
+                <span className="margin-top">
+                  {m2 && m2 + " m²".substring(0, 4)}
+                </span>
                 <span className="margin-top">{carac1}</span>
               </div>
               <p className="margin-top description">
