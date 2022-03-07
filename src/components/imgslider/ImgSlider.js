@@ -13,7 +13,7 @@ export const ImgSlider = ({ propiedadId }) => {
   }, []);
 
   return (
-    <Carousel className="carousel">
+    <Carousel className="carousel" dynamicHeight="true">
       {imagenes.length > 0 &&
         imagenes.map((imagen) => (
           <div key={imagen.id} className="imgslider">
