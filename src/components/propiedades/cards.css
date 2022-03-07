@@ -103,6 +103,11 @@ h3 {
   display: none;
 }
 
+.direccion {
+  text-decoration: none;
+  color: var(--primaryColor);
+}
+
 .btn-card-container {
   height: 50px;
   display: flex;
