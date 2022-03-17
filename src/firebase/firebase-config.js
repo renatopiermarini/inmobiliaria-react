@@ -109,6 +109,36 @@ const uploadProperty = async ({
   }
 };
 
+const editProperty = async ({
+  propiedadId,
+  titulo,
+  direccion,
+  precio,
+  descripcion,
+  m2,
+  habs,
+  bans,
+  carac1,
+  carac2,
+  carac3,
+  carac4,
+}) => {
+  await updateDoc(doc(db, "propiedades", propiedadId), {
+    titulo,
+    direccion,
+    precio: precio,
+    descripcion,
+    m2: m2,
+    habs: habs,
+    bans: bans,
+    carac1: carac1,
+    carac2: carac2,
+    carac3: carac3,
+    carac4: carac4,
+    timestamp: serverTimestamp(),
+  });
+};
+
 const getPropiedadById = (propiedadId) => {
   const propiedadRef = doc(db, "propiedades", propiedadId);
 
@@ -147,4 +177,5 @@ export {
   getPropiedadById,
   deletePropiedad,
   getImagenesCarousel,
+  editProperty,
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getPropiedadById } from "../../../firebase/firebase-config";
 import { GoogleMaps } from "../../goiogle-maps/GoogleMaps";
 import "animate.css";
@@ -7,12 +7,15 @@ import "animate.css";
 import "./propiedad-screen.css";
 import { LoadingScreen } from "./LoadingSreen";
 import { ImgSlider } from "../../imgslider/ImgSlider";
+// import { EditProperty } from "../../propiedad-edit/EditProperty";
 
 export const PropiedadScreen = () => {
   const { propiedadId } = useParams();
   const navigate = useNavigate();
   const [propiedad, setPropiedad] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const userAuth = localStorage.getItem("usuario") || "";
 
   useEffect(() => {
     getPropiedadById(propiedadId).then((data) => {
@@ -80,14 +83,36 @@ export const PropiedadScreen = () => {
                 />
               )}
             </div>
-            <div className="btn-propiedades-contactar">
-              <a href="/#contacto" className="btn-contact">
-                CONTACTAR
-              </a>
-            </div>
+            {userAuth ? (
+              <div className="btn-propiedades-contactar">
+                <Link
+                  to={`/propiedad/${propiedadId}/edit`}
+                  className="btn-contact"
+                >
+                  Editar
+                </Link>
+              </div>
+            ) : (
+              <div className="btn-propiedades-contactar">
+                <a href="/#contacto" className="btn-contact">
+                  CONTACTAR
+                </a>
+              </div>
+            )}
           </div>
         )}
       </div>
+      {/* {userAuth && (
+        <EditProperty
+          title={propiedad?.titulo}
+          address={propiedad?.direccion}
+          price={propiedad?.precio}
+          rooms={propiedad?.habs}
+          baths={propiedad?.bans}
+          metros={propiedad?.m2}
+          description={propiedad?.descripcion}
+        />
+      )} */}
     </div>
   );
 };

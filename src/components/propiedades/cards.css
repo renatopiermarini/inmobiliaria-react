@@ -79,6 +79,7 @@ h3 {
 
 .comodidades {
   display: flex;
+  align-items: center;
 }
 
 .comodidades span {
@@ -104,6 +105,7 @@ h3 {
 }
 
 .direccion {
+  margin-bottom: 10px;
   text-decoration: none;
   color: var(--primaryColor);
 }
@@ -113,6 +115,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 5px;
 }
 
 @media screen and (min-width: 600px) {
@@ -122,7 +125,7 @@ h3 {
   }
 
   .direccion {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   .description {
@@ -130,7 +133,6 @@ h3 {
   }
   .card-container {
     transition: transform 300ms ease;
-    height: 500px;
   }
   .card-container:hover {
     transform: scale(1.08);
@@ -153,8 +155,8 @@ h3 {
   }
 
   .card-container {
-    height: 530px;
-    width: 400px;
+    height: 550px;
+    width: 380px;
   }
 
   .btn-card-container {

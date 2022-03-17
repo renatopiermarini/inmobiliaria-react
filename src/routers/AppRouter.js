@@ -6,6 +6,7 @@ import { DashboardRoutes } from "./DashboardRoutes";
 import { PrivateRoutes } from "./PrivateRoutes";
 
 import { useLayoutEffect } from "react";
+import { EditProperty } from "../components/propiedad-edit/EditProperty";
 
 export const AppRouter = () => {
   const Wrapper = ({ children }) => {
@@ -26,6 +27,15 @@ export const AppRouter = () => {
             element={
               <PrivateRoutes>
                 <Dashboard />
+              </PrivateRoutes>
+            }
+          />
+
+          <Route
+            path="propiedad/:propiedadId/edit"
+            element={
+              <PrivateRoutes>
+                <EditProperty />
               </PrivateRoutes>
             }
           />
