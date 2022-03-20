@@ -73,7 +73,7 @@ export const PropiedadesCards = ({
                 {/* <span className="margin-top">{carac1}</span> */}
               </div>
               <p className="margin-top description">
-                {descripcion.substring(0, 70) + "..."}
+                {descripcion.substring(0, 80) + "..."}
               </p>
             </div>
           </Link>
