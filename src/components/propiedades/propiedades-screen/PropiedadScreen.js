@@ -57,17 +57,27 @@ export const PropiedadScreen = () => {
             </div>
             <div className="caracteristicas">
               <h3>Caracteristicas</h3>
-              <ul>
-                <li>{propiedad?.habs && propiedad?.habs + " habitaciones"}</li>
-                <li>{propiedad?.bans && propiedad?.bans + " baños"}</li>
-                {propiedad.m2 !== "" && (
-                  <li>{propiedad.m2 && propiedad?.m2 + " m²"}</li>
-                )}
-                {propiedad.carac1 !== "" && <li>{propiedad?.carac1}</li>}
-                {propiedad.carac2 !== "" && <li>{propiedad?.carac2}</li>}
-                {propiedad.carac3 !== "" && <li>{propiedad?.carac3}</li>}
-                {propiedad.carac4 !== "" && <li>{propiedad?.carac4}</li>}
-              </ul>
+              {propiedad?.habs ||
+                propiedad?.bans ||
+                propiedad?.m2 ||
+                propiedad.carac1 ||
+                propiedad.carac2 ||
+                propiedad.carac3 ||
+                (propiedad.carac4 && (
+                  <ul>
+                    <li>
+                      {propiedad?.habs && propiedad?.habs + " habitaciones"}
+                    </li>
+                    <li>{propiedad?.bans && propiedad?.bans + " baños"}</li>
+                    {propiedad.m2 !== "" && (
+                      <li>{propiedad.m2 && propiedad?.m2 + " m²"}</li>
+                    )}
+                    {propiedad.carac1 !== "" && <li>{propiedad?.carac1}</li>}
+                    {propiedad.carac2 !== "" && <li>{propiedad?.carac2}</li>}
+                    {propiedad.carac3 !== "" && <li>{propiedad?.carac3}</li>}
+                    {propiedad.carac4 !== "" && <li>{propiedad?.carac4}</li>}
+                  </ul>
+                ))}
             </div>
 
             <div className="propiedad-screen-img-container animate__animated animate__fadeIn">
