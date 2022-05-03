@@ -14,7 +14,6 @@ export const PropiedadesCards = ({
   habs,
   bans,
   m2,
-  carac1,
   descripcion,
 }) => {
   const auth = localStorage.getItem("usuario") || "";
@@ -62,10 +61,11 @@ export const PropiedadesCards = ({
               </h3>
               <div className="comodidades">
                 <span className="margin-top">
-                  {habs.substring(0, 5) + " habitaciones".substring(0, 4)}
+                  {habs &&
+                    habs.substring(0, 5) + " habitaciones".substring(0, 4)}
                 </span>
                 <span className="margin-top">
-                  {bans.substring(0, 5) + " baños".substring(0, 4)}
+                  {bans && bans.substring(0, 5) + " baños".substring(0, 4)}
                 </span>
                 <span className="margin-top">
                   {m2 && m2 + " m²".substring(0, 4)}
