@@ -149,6 +149,7 @@ export const Filters = ({ state, setSearchResults, setIsEmpty }) => {
         {state.propertyType === "venta" && <option value="lote">Lote</option>}
         <option value="local">Local comercial</option>
         <option value="terreno">Chacras / Campos</option>
+        <option value="galpones">Galpones</option>
       </select>
       <select
         className="select-property-type"
@@ -160,6 +161,10 @@ export const Filters = ({ state, setSearchResults, setIsEmpty }) => {
         <option value="viedma">Viedma</option>
         <option value="patagones">Carmen De Patagones</option>
         <option value="laboca">Balneario El Condor</option>
+        <option value="laplata">La Plata</option>
+        <option value="lasgrutas">Las Grutas</option>
+        <option value="sanantoino">San Antonio</option>
+        <option value="sanjavier">San Javier</option>
       </select>
       <select
         className="select-property-type"
