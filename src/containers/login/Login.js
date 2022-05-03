@@ -17,6 +17,7 @@ export const Login = () => {
     try {
       setError("");
       setLoading(true);
+
       login(emailRef.current.value, passwordRef.current.value).then((user) => {
         localStorage.setItem("usuario", user.uid);
         history("/dashboard");

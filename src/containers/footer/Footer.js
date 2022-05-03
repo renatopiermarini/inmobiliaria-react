@@ -7,14 +7,19 @@ export const Footer = () => {
       <span>Oficina: San Martin 558 Local 2, Viedma</span>
       <span>Telefono: 2920482896</span>
       <span>Email: marinatortarolo@gmail.com</span>
-      <a href="https://www.instagram.com/marinatortaroloei/?hl=es">
-        <img src="../../assets/instagram.png" />
-      </a>
+      <div className="insta-face">
+        <a href="https://www.instagram.com/marinatortaroloei/?hl=es">
+          <img src="../../assets/instagram.png" />
+        </a>
+        <a href="https://www.facebook.com/Marina-Tortarolo-Estudio-Inm-108207047422549/">
+          <img src="../../assets/facebook.png" />
+        </a>
+      </div>
       <a
         href="https://renato-piermarini-portfolio.vercel.app/"
         className="renato"
       >
-        Developed by Renato Piermarini
+        Desarrollada por Renato Piermarini
       </a>
     </div>
   );

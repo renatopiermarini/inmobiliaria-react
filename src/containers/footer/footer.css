@@ -15,7 +15,7 @@
 
 .footer img {
   height: 55px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .footer h2 {
@@ -27,4 +27,11 @@
   color: white;
 
   margin-top: 20px;
+}
+
+.insta-face {
+  display: flex;
+  width: 15%;
+  justify-content: space-evenly;
+  align-items: center;
 }
