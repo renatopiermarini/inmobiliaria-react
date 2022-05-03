@@ -58,8 +58,8 @@ export const PropiedadScreen = () => {
             <div className="caracteristicas">
               <h3>Caracteristicas</h3>
               <ul>
-                <li>{habs && propiedad?.habs + " habitaciones"}</li>
-                <li>{bans && propiedad?.bans + " baños"}</li>
+                <li>{propiedad?.habs && propiedad?.habs + " habitaciones"}</li>
+                <li>{propiedad?.bans && propiedad?.bans + " baños"}</li>
                 {propiedad.m2 !== "" && (
                   <li>{propiedad.m2 && propiedad?.m2 + " m²"}</li>
                 )}
