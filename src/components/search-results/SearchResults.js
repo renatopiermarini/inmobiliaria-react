@@ -7,9 +7,11 @@ export const SearchResults = ({ searchResults }) => {
     <>
       {searchResults.length > 0 && (
         <div className="list-div animate__animated animate__fadeIn">
-          {searchResults.map((propiedad) => (
-            <div key="div" className="list-results">
-              <h2 key="h2">Resultados de la búsqueda</h2>
+          <div className="list-results-title">
+            <h2 key="h2">Resultados de la búsqueda</h2>
+          </div>
+          <div key="div" className="list-results">
+            {searchResults.map((propiedad) => (
               <PropiedadesCards
                 key={propiedad.id}
                 imagen={propiedad?.data().imagen}
@@ -23,8 +25,8 @@ export const SearchResults = ({ searchResults }) => {
                 carac1={propiedad?.data().carac1}
                 descripcion={propiedad?.data().descripcion}
               />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </>

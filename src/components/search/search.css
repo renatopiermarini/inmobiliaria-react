@@ -207,7 +207,7 @@
   .filters-container {
     background-color: rgb(249, 249, 249);
     height: 500px;
-    width: 25vw;
+    width: 550px;
     flex-direction: column;
     display: flex;
     border-radius: 0 10px 10px 10px;
@@ -321,6 +321,7 @@
   .btn-buscar:hover {
     background-color: #b66597;
   }
+
   .btn-buscar:active {
     background-color: #fff;
     color: var(--primaryColor);
@@ -333,6 +334,7 @@
     display: flex;
     width: 100%;
   }
+
   .btn-search {
     width: 50%;
     background-color: rgb(255, 255, 255);

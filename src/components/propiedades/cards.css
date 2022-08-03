@@ -130,10 +130,13 @@ h3 {
 
   .description {
     margin-top: 20px;
+    height: 36px;
   }
+
   .card-container {
     transition: transform 300ms ease;
   }
+
   .card-container:hover {
     transform: scale(1.08);
   }

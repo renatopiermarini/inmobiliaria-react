@@ -5,7 +5,9 @@ import "animate.css";
 export const Contacto = () => {
   return (
     <div className="contacto animate__animated animate__fadeIn" id="contacto">
-      <ContactForm />
+      <div className="contact-form-section-home">
+        <ContactForm />
+      </div>
     </div>
   );
 };

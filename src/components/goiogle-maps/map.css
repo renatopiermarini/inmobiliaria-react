@@ -5,7 +5,8 @@
 
 @media screen and (min-width: 1000px) {
   .leaflet-container {
-    width: 700px;
+    width: 670px;
     height: 500px;
+    border-radius: 10px;
   }
 }

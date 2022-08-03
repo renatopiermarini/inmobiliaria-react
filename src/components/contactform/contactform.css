@@ -13,13 +13,13 @@
   margin-top: 40px;
 }
 
-.contact-form {
+.contact-form-section form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 450px;
-  width: 90%;
+  width: 80%;
 }
 
 .contact-input {
@@ -52,7 +52,7 @@
 
 @media screen and (min-width: 1000px) {
   .contact-form-section {
-    width: 600px;
+    width: 95%;
   }
 
   .btn-contact:disabled {

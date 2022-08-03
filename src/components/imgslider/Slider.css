@@ -8,21 +8,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--primaryColor);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .sliderimg {
   height: auto;
-  
+
 }
 
 @media screen and (max-width: 600px) {
   .imgslider {
     height: auto;
   }
+
   .carousel {
-    width: 100%;
+    width: 85% !important;
     border-radius: 0;
   }
 }

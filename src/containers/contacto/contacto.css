@@ -7,3 +7,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.contact-form-section-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 550px;
+}

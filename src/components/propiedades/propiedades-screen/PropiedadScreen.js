@@ -7,6 +7,7 @@ import "animate.css";
 import "./propiedad-screen.css";
 import { LoadingScreen } from "./LoadingSreen";
 import { ImgSlider } from "../../imgslider/ImgSlider";
+import { ContactForm } from "../../contactform/ContactForm";
 // import { EditProperty } from "../../propiedad-edit/EditProperty";
 
 export const PropiedadScreen = () => {
@@ -29,6 +30,8 @@ export const PropiedadScreen = () => {
     currency: "ARS",
   }).format(propiedad?.precio);
 
+  console.log(propiedad);
+
   return (
     <div id="propiedad">
       <div className="propiedad-screen">
@@ -41,57 +44,63 @@ export const PropiedadScreen = () => {
                 Atrás
               </button>
             </div>
-            <div className="propiedad-screen-info">
-              <h2>{propiedad?.titulo}</h2>
+            <div className="propiedad-container-section">
+              <div className="propiedad-left">
+                <div className="propiedad-screen-info-container">
+                  <div className="propiedad-screen-info">
+                    <div className="propiedad-titulo-precio">
+                      <h2>{propiedad?.titulo}</h2>
+                      <div className="address">
+                        <p>{propiedad?.direccion}</p>
+                        <a href="#mapa">
+                          <span>Ver mapa</span>
+                        </a>
+                      </div>
+                      <h3>
+                        {propiedad?.operacion !== "alquiler" && "US"}
+                        {currency}
+                      </h3>
+                    </div>
+                    <p className="descripcion-p">{propiedad?.descripcion}</p>
+                  </div>
 
-              <div className="address">
-                <p>{propiedad?.direccion}</p>
-                <a href="#mapa">
-                  <span>Ver mapa</span>
-                </a>
+                  <div className="caracteristicas">
+                    <h3>Caracteristicas</h3>
+                    <ul>
+                      {propiedad?.habs && (
+                        <li>{propiedad?.habs + " habitaciones"}</li>
+                      )}
+                      {propiedad?.bans && <li>{propiedad?.bans + " baños"}</li>}
+
+                      {propiedad.m2 !== "" && (
+                        <li>{propiedad.m2 && propiedad?.m2 + " m²"}</li>
+                      )}
+                      {propiedad.carac1 !== "" && <li>{propiedad?.carac1}</li>}
+                      {propiedad.carac2 !== "" && <li>{propiedad?.carac2}</li>}
+                      {propiedad.carac3 !== "" && <li>{propiedad?.carac3}</li>}
+                      {propiedad.carac4 !== "" && <li>{propiedad?.carac4}</li>}
+                    </ul>
+                  </div>
+                </div>
+                <div className="contact-form-div">
+                  <ContactForm />
+                </div>
               </div>
-              <h3>
-                {propiedad?.operacion !== "alquiler" && "US"}
-                {currency}
-              </h3>
-            </div>
-            <div className="caracteristicas">
-              <h3>Caracteristicas</h3>
-              {propiedad?.habs ||
-                propiedad?.bans ||
-                propiedad?.m2 ||
-                propiedad.carac1 ||
-                propiedad.carac2 ||
-                propiedad.carac3 ||
-                (propiedad.carac4 && (
-                  <ul>
-                    <li>
-                      {propiedad?.habs && propiedad?.habs + " habitaciones"}
-                    </li>
-                    <li>{propiedad?.bans && propiedad?.bans + " baños"}</li>
-                    {propiedad.m2 !== "" && (
-                      <li>{propiedad.m2 && propiedad?.m2 + " m²"}</li>
+              <div className="propiedad-right">
+                <div className="propiedad-screen-img-container animate__animated animate__fadeIn">
+                  <ImgSlider propiedadId={propiedadId} />
+                </div>
+                <div className="mapa-container">
+                  <div className="mapa" id="mapa">
+                    {propiedad.coordenadas !== undefined && (
+                      <GoogleMaps
+                        coordenadas={propiedad?.coordenadas}
+                        titulo={propiedad?.titulo}
+                      />
                     )}
-                    {propiedad.carac1 !== "" && <li>{propiedad?.carac1}</li>}
-                    {propiedad.carac2 !== "" && <li>{propiedad?.carac2}</li>}
-                    {propiedad.carac3 !== "" && <li>{propiedad?.carac3}</li>}
-                    {propiedad.carac4 !== "" && <li>{propiedad?.carac4}</li>}
-                  </ul>
-                ))}
-            </div>
-
-            <div className="propiedad-screen-img-container animate__animated animate__fadeIn">
-              <ImgSlider propiedadId={propiedadId} />
-
-              <p>{propiedad?.descripcion}</p>
-            </div>
-            <div className="mapa" id="mapa">
-              {propiedad.coordenadas !== undefined && (
-                <GoogleMaps
-                  coordenadas={propiedad?.coordenadas}
-                  titulo={propiedad?.titulo}
-                />
-              )}
+                  </div>
+                </div>
+              </div>
             </div>
             {userAuth ? (
               <div className="btn-propiedades-contactar">
@@ -103,11 +112,7 @@ export const PropiedadScreen = () => {
                 </Link>
               </div>
             ) : (
-              <div className="btn-propiedades-contactar">
-                <a href="/#contacto" className="btn-contact">
-                  CONTACTAR
-                </a>
-              </div>
+              ""
             )}
           </div>
         )}
